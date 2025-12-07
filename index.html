@@ -63,23 +63,38 @@
   const loginForm = document.getElementById("loginForm");
   const forgotForm = document.getElementById("forgotForm");
 
-  document.getElementById("showSignup").addEventListener("click", () => {
+  // Show Sign Up
+  document.getElementById("showSignup").addEventListener("click", (e) => {
+    e.preventDefault(); // prevent page reload
     signupForm.classList.add("active");
     loginForm.classList.remove("active");
     forgotForm.classList.remove("active");
   });
 
-  document.getElementById("showLogin").addEventListener("click", () => {
+  // Show Login
+  document.getElementById("showLogin").addEventListener("click", (e) => {
+    e.preventDefault();
     loginForm.classList.add("active");
     signupForm.classList.remove("active");
     forgotForm.classList.remove("active");
   });
 
-  document.getElementById("showForgot").addEventListener("click", () => {
+  // Show Forgot Password
+  document.getElementById("showForgot").addEventListener("click", (e) => {
+    e.preventDefault();
     forgotForm.classList.add("active");
     loginForm.classList.remove("active");
     signupForm.classList.remove("active");
   });
+
+  // Hide forms when clicking other nav links
+  document.querySelectorAll("nav ul li a").forEach(link => {
+    if (!link.id) { // exclude Sign Up and Login buttons
+      link.addEventListener("click", () => {
+        signupForm.classList.remove("active");
+        loginForm.classList.remove("active");
+        forgotForm.classList.remove("active");
+      });
+    }
+  });
 </script>
-</body>
-</html>

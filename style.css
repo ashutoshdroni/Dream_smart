@@ -88,19 +88,22 @@ nav ul li a:hover {
   color: #1e293b;
 }
 
+
 /* Form Inputs */
 .form-container form input {
-  width: 100%;
-  padding: 12px;
+  width: 100%;              /* full width */
+  box-sizing: border-box;   /* ensures padding doesn't change size */
+  padding: 12px;            /* consistent padding */
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 6px;
+  font-size: 14px;          /* consistent text size */
 }
 
 /* Form Buttons */
 .form-container form button {
   width: 100%;
-  padding: 12px;
+  padding: 12px 12px 12px 12px;
   background-color: #facc15;
   color: #0f172a;
   border: none;
@@ -141,7 +144,7 @@ nav ul li a:hover {
   }
 
   .signup-btn {
-    width: 100%;
+    width: 111%;
     text-align: center;
   }
 
