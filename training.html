@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Training - Dream Smart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="Dream Smart Logo">
+        <div>
+          <h1>DREAM SMART</h1>
+          <p>Let's Share The Dream</p>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="training.html">Training</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+      </ul>
+      <div class="auth-buttons">
+        <button class="btn-signup" onclick="openSignupModal()">Sign up</button>
+        <button class="btn-login" onclick="openLoginModal()">Log In</button>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- Training content -->
+  <main>
+  <section class="training-section">
+    <h2>📚 Training</h2>
+    <h3>Training & Skill Development</h3>
+    <p>
+      Dream Smart Construction strongly believes in developing skilled professionals for the construction industry.
+    </p>
+
+    <h3>Available Training Programs</h3>
+    <ul>
+      <li>Civil Engineering Fundamentals</li>
+      <li>Construction Management</li>
+      <li>Technical & Industry-Specific Skills</li>
+    </ul>
+
+    <h3>How It Works</h3>
+    <ul>
+      <li>Browse available training programs</li>
+      <li>Fill out the enrollment form</li>
+      <li>Submit your details</li>
+    </ul>
+
+    <p><strong>After submission:</strong></p>
+    <ul>
+      <li>Our team will contact you for further guidance</li>
+      <li>All training applications are reviewed by the Super Admin</li>
+    </ul>
+
+    <!-- Enrollment Form -->
+    <h3>Enrollment Form</h3>
+    <form class="enrollment-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+</main>
+      <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password:</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <div class="form-options">
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn-submit">Login</button>
+                <div class="form-footer">
+                    Don't have an account? <a href="#" onclick="switchToSignup(); return false;">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignupModal()">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="signupPassword">Password:</label>
+                        <input type="password" id="signupPassword" name="password" minlength="8" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password:</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userType">I am a:</label>
+                    <select id="userType" name="userType" required>
+                        <option value="">Select...</option>
+                        <option value="client">Client</option>
+                        <option value="contractor">Contractor</option>
+                        <option value="engineer">Engineer</option>
+                        <option value="architect">Architect</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Create Account</button>
+                <div class="form-footer">
+                    Already have an account? <a href="#" onclick="switchToLogin(); return false;">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+  <script src="script.js"></script>
+</body>
+</html>
