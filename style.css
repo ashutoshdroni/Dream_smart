@@ -1604,7 +1604,7 @@ footer {
     color: var(--text-light);
 }
 
-/*               ====== MOBILE MENU               ====== */
+/*  ====== MOBILE MENU ====== */
 .menu-toggle {
     position: fixed;
     top: 15px;
@@ -1779,7 +1779,7 @@ footer {
     box-shadow: var(--shadow-md);
 }
 
-/*               ====== PARTNERS SECTION               ====== */
+/* ====== PARTNERS SECTION ====== */
 .partners_section {
     flex-basis: 100%;
     margin-top: clamp(2rem, 4vw, 3rem);
@@ -1891,7 +1891,7 @@ footer {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
-/*               ====== PROGRESS BAR               ====== */
+/* ====== PROGRESS BAR ====== */
 #progress-container {
     width: 100%;
     background-color: #f1f1f1;
@@ -1920,7 +1920,7 @@ footer {
     100% { opacity: 1; }
 }
 
-/*               ====== CONTENT PAGES               ====== */
+/*====== CONTENT PAGES ====== */
 .projects-section, .contact-section, .career-section, .training-section, .about-container {
     max-width: 1200px;
     margin: clamp(1.5rem, 3vw, 2rem) auto;
@@ -2011,7 +2011,7 @@ footer {
     box-shadow: 0 12px 40px rgba(0,0,0,0.15);
 }
 
-/*               ====== TRAINING CARDS               ====== */
+/*   ====== TRAINING CARDS  ====== */
 .training-cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2112,7 +2112,7 @@ footer {
     transform: translateY(-1px) scale(1.02);
 }
 
-/*               ====== ABOUT SECTION               ====== */
+/*  ====== ABOUT SECTION ====== */
 .about-container {
     display: flex;
     flex-wrap: wrap;
@@ -2145,7 +2145,7 @@ footer {
     box-shadow: var(--shadow-lg);
 }
 
-/*               ====== UTILITY CLASSES               ====== */
+/*  ====== UTILITY CLASSES====== */
 .glass-effect {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px) saturate(180%);
@@ -2164,7 +2164,7 @@ footer {
     100% { background-position: 200% 0; }
 }
 
-/*               ====== RESPONSIVE DESIGN               ====== */
+/*   ====== RESPONSIVE DESIGN ====== */
 @media screen and (max-width: 1224px) {
     .navbar {
         padding: 0.8rem clamp(1rem, 3vw, 3%);
@@ -2421,7 +2421,7 @@ footer {
     }
 }
 
-/*               ====== ACCESSIBILITY               ====== */
+/*====== ACCESSIBILITY ====== */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -2432,7 +2432,7 @@ footer {
     }
 }
 
-/*               ====== MOBILE HOVER EFFECTS               ====== */
+/*====== MOBILE HOVER EFFECTS ====== */
 @media (hover: none) and (pointer: coarse) {
     .team-card:active,
     .project-card:active,
@@ -2447,7 +2447,7 @@ footer {
     }
 }
 
-/*               ====== PRINT STYLES               ====== */
+/*====== PRINT STYLES====== */
 @media print {
     .navbar,
     .menu-toggle,
@@ -2470,4 +2470,4 @@ footer {
     }
 }
 
-/*               ====== END OF CSS               ====== */
+/*====== END OF CSS====== */
