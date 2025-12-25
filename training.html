@@ -86,11 +86,11 @@
       </ul>
 
       <h3>How It Works</h3>
-      <ol>
+      <ul>
         <li>Browse available training programs</li>
         <li>Fill out the enrollment form</li>
         <li>Submit your details</li>
-      </ol>
+      </ul>
 
       <p><strong>After submission:</strong></p>
       <ul>
@@ -201,7 +201,7 @@
             `*New Training Application*\n` + 
             `*Course:* ${selectedCourse}\n` +
             `*Name:* ${name}\n` + 
-            `*Email:* ${email}`
+            `*Email:<span class="required">** ${email}`
           );
 
           const url = `https://wa.me/${phone}?text=${message}`;
@@ -269,14 +269,14 @@
         <p>Let's Build The Dream</p>
       </div>
       
-      <h3>Login</h3>
+      <h2>Login</h2>
       <form id="loginForm">
         <div class="form-group">
-          <label for="loginEmail">Email:</label>
+          <label for="loginEmail">Email:<span class="required">*</label>
           <input type="email" id="loginEmail" name="email" autocomplete="email" required>
         </div>
         <div class="form-group">
-          <label for="loginPassword">Password:</label>
+          <label for="loginPassword">Password:<span class="required">*</label>
           <input type="password" id="loginPassword" name="password" autocomplete="current-password" required>
         </div>
         <div class="form-options">
@@ -301,24 +301,24 @@
         <p>Let's Build The Dream</p>
       </div>
       
-      <h3>Sign Up</h3>
+      <h2>Sign Up</h2>
       <form id="signupForm">
         <div class="form-row">
           <div class="form-group">
-            <label for="firstName">First Name:</label>
+            <label for="firstName">First Name:<span class="required">*</label>
             <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
           </div>
           <div class="form-group">
-            <label for="lastName">Last Name:</label>
+            <label for="lastName">Last Name:<span class="required">*</label>
             <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
           </div>
         </div>
         <div class="form-group">
-          <label for="signupEmail">Email:</label>
+          <label for="signupEmail">Email:<span class="required">*</label>
           <input type="email" id="signupEmail" name="email" autocomplete="email" required>
         </div>
         <div class="form-group">
-          <label for="phone">Phone Number:</label>
+          <label for="phone">Phone Number:<span class="required">*</label>
           <div class="phone-input">
             <select id="countryCode" name="countryCode" aria-label="Country code" required>
               <option value="+91" selected>+91 India</option>
@@ -337,16 +337,16 @@
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="signupPassword">Password:</label>
+            <label for="signupPassword">Password:<span class="required">*</label>
             <input type="password" id="signupPassword" name="password" minlength="8" autocomplete="new-password" required>
           </div>
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password:</label>
+            <label for="confirmPassword">Confirm Password:<span class="required">*</label>
             <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required>
           </div>
         </div>
         <div class="form-group">
-          <label for="userType">I am a:</label>
+          <label for="userType">I am a:<span class="required">*</label>
           <select id="userType" name="userType" required>
             <option value="">Select...</option>
             <option value="client">Client</option>

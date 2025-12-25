@@ -106,7 +106,7 @@
 
             <!-- Right Column: Single Image -->
             <div class="about-image">
-                <img src="images/about-img.png" alt="Dream Smart Construction Team and Projects" width="600" height="400" loading="lazy">
+                <img src="images/about-img.png" alt="Dream Smart Construction Team and Projects" loading="lazy">
             </div>
         </section>
 
@@ -273,11 +273,11 @@
             <h2>Login</h2>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">Email:</label>
+                    <label for="loginEmail">Email:<span class="required">*<span class="required">*</label>
                     <input type="email" id="loginEmail" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="loginPassword">Password:</label>
+                    <label for="loginPassword">Password:<span class="required">*<span class="required">*</label>
                     <input type="password" id="loginPassword" name="password" required>
                 </div>
                 <div class="form-options">
@@ -307,20 +307,20 @@
             <form id="signupForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="firstName">First Name:</label>
+                        <label for="firstName">First Name:<span class="required">*</label>
                         <input type="text" id="firstName" name="firstName" required>
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Last Name:</label>
+                        <label for="lastName">Last Name:<span class="required">*</label>
                         <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="signupEmail">Email:</label>
+                    <label for="signupEmail">Email:<span class="required">*</label>
                     <input type="email" id="signupEmail" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number:</label>
+                    <label for="phone">Phone Number:<span class="required">*</label>
                     <div class="phone-input">
                         <select id="countryCode" name="countryCode" required>
                             <option value="+91" selected>+91 India</option>
@@ -356,16 +356,16 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="signupPassword">Password:</label>
+                        <label for="signupPassword">Password:<span class="required">*</label>
                         <input type="password" id="signupPassword" name="password" minlength="8" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirmPassword">Confirm Password:</label>
+                        <label for="confirmPassword">Confirm Password:<span class="required"></label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="userType">I am a:</label>
+                    <label for="userType">I am a:<span class="required">*</label>
                     <select id="userType" name="userType" required>
                         <option value="">Select...</option>
                         <option value="client">Client</option>
