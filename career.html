@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Career - Dream Smart</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join Dream Smart Construction - Apply for positions like Civil Engineer, Site Supervisor, Project Manager, Architect, and more. Submit your resume via WhatsApp.">
+    <meta name="keywords" content="construction jobs, civil engineer jobs, site supervisor, project manager, construction careers, apply now">
+    <title>Career Opportunities - Dream Smart Construction</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="images/logo.png" as="image">
 </head>
 <body>
     <!-- Hamburger Menu Toggle Button (Mobile Only) -->
@@ -13,24 +17,24 @@
         <span></span>
     </button>
 
-<!-- Overlay -->
+    <!-- Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<!-- Mobile Sidebar -->
+    <!-- Mobile Sidebar -->
     <aside class="mobile-sidebar" id="mobileSidebar">
         <div class="sidebar-logo">
-            <img src="images/logo.png" alt="Dream Smart Logo">
+            <img src="images/logo.png" alt="Dream Smart Logo" width="80" height="80">
             <h1>DREAM SMART</h1>
             <p>Let's Build The Dream</p>
         </div>
 
-        <nav>
+        <nav aria-label="Mobile navigation">
             <ul class="sidebar-nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="training.html">Training</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="career.html">Career</a></li>
+                <li><a href="career.html" aria-current="page">Career</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
@@ -40,153 +44,208 @@
             <button class="sidebar-btn login" onclick="openLoginModal(); closeSidebar();">Log In</button>
         </div>
     </aside>
-  <!-- Navbar -->
-   <header>
-    <nav class="navbar">
-    <a href="index.html" class="logo">
-        <img src="images/logo.png" alt="Dream Smart Logo">
-        <div>
-          <h1>DREAM SMART</h1>
-          <p>Let's Build The Dream</p>
-        </div>
-    </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="training.html">Training</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="career.html">Career</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-      <div class="auth-buttons">
-        <button class="btn-signup" onclick="openSignupModal()">Sign Up</button>
-        <button class="btn-login" onclick="openLoginModal()">Log In</button>
-      </div>
-    </nav>
-  </header>
 
+    <!-- Header -->
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Dream Smart Logo" width="50" height="50">
+                <div>
+                    <h1>DREAM SMART</h1>
+                    <p>Let's Build The Dream</p>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="career.html" aria-current="page">Career</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn-signup" onclick="openSignupModal()">Sign Up</button>
+                <button class="btn-login" onclick="openLoginModal()">Log In</button>
+            </div>
+        </nav>
+    </header>
 
-  <!-- Career content -->
-      <div class="a4-container">
-    <main>
-  <section class="career-section">
-    <h2>💼 Career</h2>
-    <h3>🏗️ Welcome to Dream Smart Construction</h3>
-    <p>
-      Dream Smart Construction is a trusted construction company delivering quality, innovation, and reliability across every project we undertake. 
-      We specialize in building strong foundations—both structurally and professionally—by combining modern construction techniques with industry expertise.
-    </p>
+    <!-- Career Content -->
+    <div class="a4-container">
+        <main>
+            <section class="career-section">
+                <h1>💼 Career</h1>
+                
+                <h2>🏗️ Welcome to Dream Smart Construction</h2>
+                <p>
+                    Dream Smart Construction is a trusted construction company delivering quality, innovation, and reliability across every project we undertake. 
+                    We specialize in building strong foundations—both structurally and professionally—by combining modern construction techniques with industry expertise.
+                </p>
 
-    <h3>👥 Who We Are</h3>
-    <p>
-      We are committed to providing construction solutions that meet the highest standards of safety, quality, and efficiency. 
-      Our team of skilled professionals works closely with clients to turn ideas into reality.
-    </p>
+                <h3>👥 Who We Are</h3>
+                <p>
+                    We are committed to providing construction solutions that meet the highest standards of safety, quality, and efficiency. 
+                    Our team of skilled professionals works closely with clients to turn ideas into reality.
+                </p>
 
-    <h3>🌟 Our Vision</h3>
-    <p>
-      To become a leading construction company known for smart planning, durable structures, and customer satisfaction.
-    </p>
+                <h3>🌟 Our Vision</h3>
+                <p>
+                    To become a leading construction company known for smart planning, durable structures, and customer satisfaction.
+                </p>
 
-    <h3>📋 Job Application Form</h3>
-    <form class="career-form">
-      <label for="fullName">Full name:<span class="required">*</label>
-      <input type="text" id="fullName" name="fullName"  pattern="^[a-zA-Z\s]+$" minlength="2" maxlength="50" placeholder="Enter your full name" required>
+                <h2>📋 Job Application Form</h2>
+                <form class="career-form" id="careerForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name: <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="fullName" 
+                            name="fullName" 
+                            pattern="^[a-zA-Z\s]+$" 
+                            minlength="2" 
+                            maxlength="50" 
+                            placeholder="Enter your full name" 
+                            required
+                            aria-required="true">
+                    </div>
 
-      <label for="email">Email id:<span class="required">*</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <div class="form-group">
+                        <label for="email">Email Address: <span class="required">*</span></label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Enter your email" 
+                            required
+                            aria-required="true">
+                    </div>
 
-      <label for="mobile">Mobile Number<span class="required">*</label>
-       <div class="phone-input">
-    <select id="country-code" name="country-code" required>
-        <option value="+91"> +91 (India)</option>
-        <option value="+977">+977 (Nepal)</option>
-        <option value="+94">+94 (Sri Lanka)</option>
-        <option value="+92">+92 (Pakistan)</option>
-        <option value="+880"> +880 (Bangladesh)</option>
-        <option value="+60">+60 (Malaysia)</option>
-        <option value="+65"> +65 (Singapore)</option>
-        <option value="+62"> +62 (Indonesia)</option>
-        <option value="+63"> +63 (Philippines)</option>
-        <option value="+66">+66 (Thailand)</option>
-        <option value="+84"> +84 (Vietnam)</option>
-        <option value="+81">+81 (Japan)</option>
-        <option value="+82">+82 (South Korea)</option>
-        <option value="+86">+86 (China)</option>
-        <option value="+971">+971 (UAE)</option>
-        <option value="+964">+964 (Iraq)</option>
-    </select>
-    <input type="tel" id="mobile" name="mobile"  pattern="[0-9]{10}" placeholder="Enter your mobile number (10 digits)" required>
-        </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number: <span class="required">*</span></label>
+                        <div class="phone-input">
+                            <select id="country-code" name="country-code" required aria-required="true">
+                                <option value="+91">+91 (India)</option>
+                                <option value="+1">+1 (USA/Canada)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+61">+61 (Australia)</option>
+                                <option value="+971">+971 (UAE)</option>
+                                <option value="+966">+966 (Saudi Arabia)</option>
+                                <option value="+977">+977 (Nepal)</option>
+                                <option value="+94">+94 (Sri Lanka)</option>
+                                <option value="+92">+92 (Pakistan)</option>
+                                <option value="+880">+880 (Bangladesh)</option>
+                                <option value="+60">+60 (Malaysia)</option>
+                                <option value="+65">+65 (Singapore)</option>
+                                <option value="+62">+62 (Indonesia)</option>
+                                <option value="+63">+63 (Philippines)</option>
+                                <option value="+66">+66 (Thailand)</option>
+                                <option value="+84">+84 (Vietnam)</option>
+                                <option value="+81">+81 (Japan)</option>
+                                <option value="+82">+82 (South Korea)</option>
+                                <option value="+86">+86 (China)</option>
+                                <option value="+964">+964 (Iraq)</option>
+                            </select>
+                            <input 
+                                type="tel" 
+                                id="mobile" 
+                                name="mobile" 
+                                pattern="[0-9]{10}" 
+                                placeholder="Enter your mobile number (10 digits)" 
+                                required
+                                aria-required="true">
+                        </div>
+                    </div>
 
-      <label for="position">Position applied for:<span class="required">*</label>
-      <select id="position" name="position" required>
-        <option value="">Select a position</option>
-        <option value="civil-engineer">Civil Engineer</option>
-        <option value="site-supervisor">Site Supervisor</option>
-        <option value="project-manager">Project Manager</option>
-        <option value="architect">Architect</option>
-        <option value="construction-worker">Construction Worker</option>
-        <option value="electrician">Electrician</option>
-        <option value="plumber">Plumber</option>
-        <option value="quantity-surveyor">Quantity Surveyor</option>
-        <option value="safety-officer">Safety Officer</option>
-        <option value="other">Other</option>
-      </select>
+                    <div class="form-group">
+                        <label for="position">Position Applied For: <span class="required">*</span></label>
+                        <select id="position" name="position" required aria-required="true">
+                            <option value="">Select a position</option>
+                            <option value="civil-engineer">Civil Engineer</option>
+                            <option value="site-supervisor">Site Supervisor</option>
+                            <option value="project-manager">Project Manager</option>
+                            <option value="architect">Architect</option>
+                            <option value="construction-worker">Construction Worker</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="quantity-surveyor">Quantity Surveyor</option>
+                            <option value="safety-officer">Safety Officer</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
 
-      <label for="resume">Resume:<span class="required">*</label>
-      <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                    <div class="form-group">
+                        <label for="resume">Resume (PDF, DOC, DOCX): <span class="required">*</span></label>
+                        <input 
+                            type="file" 
+                            id="resume" 
+                            name="resume" 
+                            accept=".pdf,.doc,.docx" 
+                            required
+                            aria-required="true">
+                    </div>
 
-      <label for="video">Video (Optional):</label>
-      <input type="file" id="video" name="video" accept="video/*">
-      <div id="progress-container" style="width: 100%; background: #e0e0e0; border-radius: 5px; margin-bottom: 10px; display: none;">
-    <div id="progress-bar" style="width: 0%; height: 10px; background: #25D366; border-radius: 5px; transition: width 0.2s;"></div>
-</div>
+                    <div class="form-group">
+                        <label for="video">Video Introduction (Optional):</label>
+                        <input 
+                            type="file" 
+                            id="video" 
+                            name="video" 
+                            accept="video/*"
+                            aria-describedby="video-help">
+                        <small id="video-help" class="form-help">Upload a short video introducing yourself (optional)</small>
+                    </div>
 
-      <button type="button" onclick="sendWhatsApp()">Submit Application via WhatsApp</button>
-    </form>
-  </section>
-</main>
+                    <div id="progress-container" style="width: 100%; background: #e0e0e0; border-radius: 5px; margin-bottom: 10px; display: none;" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                        <div id="progress-bar" style="width: 0%; height: 10px; background: #25D366; border-radius: 5px; transition: width 0.2s;"></div>
+                    </div>
 
-  </div>
+                    <button type="button" onclick="sendWhatsApp()" class="btn-submit">
+                        Submit Application via WhatsApp
+                    </button>
+                </form>
+            </section>
+        </main>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="quick-links">
-                <img src="images/logo.png" alt="Dream Smart Logo" class="footer-logo">
+                <img src="images/logo.png" alt="Dream Smart Logo" class="footer-logo" width="60" height="60">
             </div>
             <div class="contact-info">
                 <div class="contact-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%232196F3' viewBox='0 0 24 24' width='30'%3E%3Cpath d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'/%3E%3C/svg%3E" alt="Phone">
-                    <span>+91 84279-97933 /+91 98550-91228</span>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%232196F3' viewBox='0 0 24 24' width='30'%3E%3Cpath d='M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z'/%3E%3C/svg%3E" alt="Phone" width="30" height="30">
+                    <span>+91 84279-97933 / +91 98550-91228</span>
                 </div>
                 <div class="contact-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 24 24' width='30'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E" alt="Email">
-                    <span>                       dreamsmart.const108@gmail.com</span>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 24 24' width='30'%3E%3Cpath d='M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E" alt="Email" width="30" height="30">
+                    <span>dreamsmart.const108@gmail.com</span>
                 </div>
-                <div class="address">
-                    <p>BUILDING NO - 106 , PHASAE - 2 , VEER NAGAR , ICCHE WALA ROAD, FEROZEPUR CITY, PUNJAB 152001, INDIA</p>
-                </div>
+                <address class="address">
+                    <p>Building No - 106, Phase - 2, Veer Nagar, Ichhe Wala Road, Ferozepur City, Punjab 152001, India</p>
+                </address>
             </div>
         </div>
         <div class="social-links">
-            <a href="https://maps.app.goo.gl/sU4hKC8PDVfu5vcd6" target="_blank" aria-label="Location">
-                <img src="images/maps.png" alt="Location" class="social-icon">
+            <a href="https://maps.app.goo.gl/sU4hKC8PDVfu5vcd6" target="_blank" rel="noopener noreferrer" aria-label="View location on Google Maps">
+                <img src="images/maps.png" alt="Location" class="social-icon" width="40" height="40">
             </a>
             <a href="#" aria-label="Twitter">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 24 24'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E" alt="Twitter">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 24 24'%3E%3Cpath d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'/%3E%3C/svg%3E" alt="Twitter" width="40" height="40">
             </a>
             <a href="#" aria-label="Instagram">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23E4405F' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'/%3E%3C/svg%3E" alt="Instagram">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23E4405F' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'/%3E%3C/svg%3E" alt="Instagram" width="40" height="40">
             </a>
             <a href="#" aria-label="Facebook">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%231877F2' viewBox='0 0 24 24'%3E%3Cpath d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/%3E%3C/svg%3E" alt="Facebook">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%231877F2' viewBox='0 0 24 24'%3E%3Cpath d='M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z'/%3E%3C/svg%3E" alt="Facebook" width="40" height="40">
             </a>
             <a href="#" aria-label="WhatsApp">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2325D366' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/%3E%3C/svg%3E" alt="WhatsApp">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2325D366' viewBox='0 0 24 24'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/%3E%3C/svg%3E" alt="WhatsApp" width="40" height="40">
             </a>
         </div>
     </footer>
+
     <!-- Login Modal -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
@@ -194,7 +253,7 @@
             
             <!-- Logo Section -->
             <div class="modal-logo">
-                <img src="images/logo.png" alt="Dream Smart Logo">
+                <img src="images/logo.png" alt="Dream Smart Logo" width="60" height="60">
                 <h1>DREAM SMART</h1>
                 <p>Let's Build The Dream</p>
             </div>
@@ -202,11 +261,11 @@
             <h2>Login</h2>
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">Email:<span class="required">*</label>
+                    <label for="loginEmail">Email:</label>
                     <input type="email" id="loginEmail" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="loginPassword">Password:<span class="required">*</label>
+                    <label for="loginPassword">Password:</label>
                     <input type="password" id="loginPassword" name="password" required>
                 </div>
                 <div class="form-options">
@@ -227,7 +286,7 @@
             
             <!-- Logo Section -->
             <div class="modal-logo">
-                <img src="images/logo.png" alt="Dream Smart Logo">
+                <img src="images/logo.png" alt="Dream Smart Logo" width="60" height="60">
                 <h1>DREAM SMART</h1>
                 <p>Let's Build The Dream</p>
             </div>
@@ -236,23 +295,23 @@
             <form id="signupForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="firstName">First Name:<span class="required">*</label>
+                        <label for="firstName">First Name:</label>
                         <input type="text" id="firstName" name="firstName" required>
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Last Name:<span class="required">*</label>
+                        <label for="lastName">Last Name:</label>
                         <input type="text" id="lastName" name="lastName" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="signupEmail">Email:<span class="required">*</label>
+                    <label for="signupEmail">Email:</label>
                     <input type="email" id="signupEmail" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number:<span class="required">*</label>
+                    <label for="signupPhone">Phone Number:</label>
                     <div class="phone-input">
-                        <select id="countryCode" name="countryCode" required>
-                             <option value="+91" selected>+91 India</option>
+                        <select id="signupCountryCode" name="countryCode" required>
+                            <option value="+91" selected>+91 India</option>
                             <option value="+1">+1 USA/Canada</option>
                             <option value="+44">+44 UK</option>
                             <option value="+61">+61 Australia</option>
@@ -279,21 +338,22 @@
                             <option value="+84">+84 Vietnam</option>
                             <option value="+977">+977 Nepal</option>
                             <option value="+94">+94 Sri Lanka</option>
-                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+                        </select>
+                        <input type="tel" id="signupPhone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="signupPassword">Password:<span class="required">*</label>
+                        <label for="signupPassword">Password:</label>
                         <input type="password" id="signupPassword" name="password" minlength="8" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirmPassword">Confirm Password:<span class="required">*</label>
+                        <label for="confirmPassword">Confirm Password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="userType">I am a:<span class="required">*</label>
+                    <label for="userType">I am a:</label>
                     <select id="userType" name="userType" required>
                         <option value="">Select...</option>
                         <option value="client">Client</option>
@@ -310,6 +370,7 @@
             </form>
         </div>
     </div>
-   <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
