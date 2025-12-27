@@ -2818,7 +2818,7 @@ footer {
 }
 
 .enrollment-form button[type="button"]::before {
-    content: '📱';
+    content: '';
     position: absolute;
     left: 2rem;
     font-size: 1.5em;
@@ -3291,7 +3291,7 @@ footer {
 }
 
 .contact-form button[type="button"]::before {
-    content: '📱';
+    content: '';
     position: absolute;
     left: 2rem;
     font-size: 1.5em;
@@ -3756,7 +3756,7 @@ footer {
 }
 
 .career-form button[type="button"]::before {
-    content: '📱';
+    content: '';
     position: absolute;
     left: 2rem;
     font-size: 1.5em;
