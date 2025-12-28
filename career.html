@@ -77,7 +77,7 @@
                 <h2>💼 Career</h2>
             </div>
             
-            <h3>🏗️ Welcome to Dream Smart Construction</h3>
+            <h3>🗝️ Welcome to Dream Smart Construction</h3>
             <p>
                 Dream Smart Construction is a trusted construction company delivering quality, innovation, and reliability across every project we undertake. 
                 We specialize in building strong foundations—both structurally and professionally—by combining modern construction techniques with industry expertise.
@@ -279,7 +279,7 @@
                     <input type="email" id="signupEmail" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="signupPhone">Phone Number:<span class="required">*</span></label>
+                    <label for="phone">Phone Number:<span class="required">*</span></label>
                     <div class="phone-input">
                         <select id="signupCountryCode" name="countryCode" required>
                             <option value="+91" selected>+91 India</option>
@@ -310,7 +310,7 @@
                             <option value="+977">+977 Nepal</option>
                             <option value="+94">+94 Sri Lanka</option>
                         </select>
-                        <input type="tel" id="signupPhone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
                     </div>
                 </div>
                 <div class="form-row">
@@ -345,120 +345,190 @@
     <script src="script.js"></script>
     
     <script>
-        // Career Form Validation and WhatsApp Submit
-        function validateCareerForm() {
-            const name = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const mobile = document.getElementById('mobile').value.trim();
-            const position = document.getElementById('position').value;
-
-            // Name validation (2-30 characters, letters and spaces only)
-            const namePattern = /^[a-zA-Z\s]{2,30}$/;
-            if (!namePattern.test(name)) {
-                alert('❌ Name must be 2-30 characters and contain only letters and spaces.');
-                document.getElementById('fullName').focus();
-                return false;
-            }
-
-            // Email validation
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                alert('❌ Please enter a valid email address (e.g., example@email.com).');
-                document.getElementById('email').focus();
-                return false;
-            }
-
-            // Mobile number validation (exactly 10 digits)
-            const mobilePattern = /^[0-9]{10}$/;
-            if (!mobilePattern.test(mobile)) {
-                alert('❌ Mobile number must be exactly 10 digits (without country code).');
-                document.getElementById('mobile').focus();
-                return false;
-            }
-
-            // Position validation
-            if (position === '') {
-                alert('❌ Please select a position you are applying for.');
-                document.getElementById('position').focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        function sendWhatsAppCareer() {
-            const form = document.getElementById('careerForm');
+        // ==================== CAREER FORM MODULE ====================
+        const CareerForm = (function() {
+            'use strict';
             
-            // HTML5 validation
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
+            // Configuration
+            const CONFIG = {
+                whatsappPhone: "919815969240",
+                formId: "careerForm",
+                fields: {
+                    fullName: "fullName",
+                    email: "email",
+                    mobile: "mobile",
+                    countryCode: "country-code",
+                    position: "position"
+                }
+            };
+
+            // Validation patterns
+            const PATTERNS = {
+                name: /^[a-zA-Z\s]{2,30}$/,
+                email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                mobile: /^[0-9]{10}$/
+            };
+
+            // Error messages
+            const ERRORS = {
+                name: '⚠ Name must be 2-30 characters and contain only letters and spaces.',
+                email: '⚠ Please enter a valid email address (e.g., example@email.com).',
+                mobile: '⚠ Mobile number must be exactly 10 digits (without country code).',
+                position: '⚠ Please select a position you are applying for.'
+            };
+
+            // Cache DOM elements
+            const elements = {};
+
+            // Initialize DOM cache
+            function cacheDOMElements() {
+                elements.form = document.getElementById(CONFIG.formId);
+                elements.fullName = document.getElementById(CONFIG.fields.fullName);
+                elements.email = document.getElementById(CONFIG.fields.email);
+                elements.mobile = document.getElementById(CONFIG.fields.mobile);
+                elements.countryCode = document.getElementById(CONFIG.fields.countryCode);
+                elements.position = document.getElementById(CONFIG.fields.position);
             }
 
-            // Custom validation
-            if (!validateCareerForm()) {
-                return;
+            // Validation functions
+            function validateField(value, pattern, errorMsg, focusElement) {
+                if (!pattern.test(value.trim())) {
+                    alert(errorMsg);
+                    focusElement?.focus();
+                    return false;
+                }
+                return true;
             }
 
-            const phone = "919815969240";
-            const name = document.getElementById('fullName').value.trim();
-            const countryCode = document.getElementById('country-code').value;
-            const mobile = document.getElementById('mobile').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const position = document.getElementById('position').value;
-            
-            // Convert position value to readable format
-            const positionText = position.split('-').map(word => 
-                word.charAt(0).toUpperCase() + word.slice(1)
-            ).join(' ');
+            function validateCareerForm() {
+                const name = elements.fullName.value;
+                const email = elements.email.value;
+                const mobile = elements.mobile.value;
+                const position = elements.position.value;
 
-            const finalMessage = encodeURIComponent(
-                `*💼 New Career Application*\n\n` + 
-                `*Name:* ${name}\n` + 
-                `*Email:* ${email}\n` +
-                `*Mobile:* ${countryCode} ${mobile}\n` + 
-                `*Position Applied For:* ${positionText}\n\n` +
-                `_Submitted via Dream Smart Career Portal_`
-            );
+                // Name validation
+                if (!validateField(name, PATTERNS.name, ERRORS.name, elements.fullName)) {
+                    return false;
+                }
 
-            const url = `https://wa.me/${phone}?text=${finalMessage}`;
-            
-            // Show success message
-            alert('✅ Your application is being sent to WhatsApp!\n\nYou will be redirected now.');
-            
-            // Redirect to WhatsApp
-            window.location.href = url;
-            
-            // Reset form after a short delay
-            setTimeout(() => {
-                form.reset();
-            }, 1000);
-        }
+                // Email validation
+                if (!validateField(email, PATTERNS.email, ERRORS.email, elements.email)) {
+                    return false;
+                }
 
-        // Real-time validation for inputs
+                // Mobile validation
+                if (!validateField(mobile, PATTERNS.mobile, ERRORS.mobile, elements.mobile)) {
+                    return false;
+                }
+
+                // Position validation
+                if (!position) {
+                    alert(ERRORS.position);
+                    elements.position.focus();
+                    return false;
+                }
+
+                return true;
+            }
+
+            // Format position text
+            function formatPositionText(position) {
+                return position.split('-')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ');
+            }
+
+            // Build WhatsApp message
+            function buildWhatsAppMessage() {
+                const data = {
+                    name: elements.fullName.value.trim(),
+                    email: elements.email.value.trim(),
+                    countryCode: elements.countryCode.value,
+                    mobile: elements.mobile.value.trim(),
+                    position: formatPositionText(elements.position.value)
+                };
+
+                return encodeURIComponent(
+                    `*💼 New Career Application*\n\n` + 
+                    `*Name:* ${data.name}\n` + 
+                    `*Email:* ${data.email}\n` +
+                    `*Mobile:* ${data.countryCode} ${data.mobile}\n` + 
+                    `*Position Applied For:* ${data.position}\n\n` +
+                    `_Submitted via Dream Smart Career Portal_`
+                );
+            }
+
+            // Send to WhatsApp
+            function sendToWhatsApp() {
+                // HTML5 validation
+                if (!elements.form.checkValidity()) {
+                    elements.form.reportValidity();
+                    return;
+                }
+
+                // Custom validation
+                if (!validateCareerForm()) {
+                    return;
+                }
+
+                const message = buildWhatsAppMessage();
+                const url = `https://wa.me/${CONFIG.whatsappPhone}?text=${message}`;
+                
+                // Show success message
+                alert('✅ Your application is being sent to WhatsApp!\n\nYou will be redirected now.');
+                
+                // Redirect to WhatsApp
+                window.location.href = url;
+                
+                // Reset form after delay
+                setTimeout(() => elements.form.reset(), 1000);
+            }
+
+            // Setup real-time input filters
+            function setupInputFilters() {
+                // Mobile number - only digits, max 10
+                if (elements.mobile) {
+                    elements.mobile.addEventListener('input', function() {
+                        this.value = this.value.replace(/[^0-9]/g, '');
+                        if (this.value.length > 10) {
+                            this.value = this.value.slice(0, 10);
+                        }
+                    });
+                }
+
+                // Name - only letters and spaces, max 30
+                if (elements.fullName) {
+                    elements.fullName.addEventListener('input', function() {
+                        this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+                        if (this.value.length > 30) {
+                            this.value = this.value.slice(0, 30);
+                        }
+                    });
+                }
+            }
+
+            // Initialize module
+            function init() {
+                cacheDOMElements();
+                setupInputFilters();
+            }
+
+            // Public API
+            return {
+                init: init,
+                sendToWhatsApp: sendToWhatsApp
+            };
+        })();
+
+        // Initialize on DOM ready
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile number - only digits, max 10
-            const mobileInput = document.getElementById('mobile');
-            if (mobileInput) {
-                mobileInput.addEventListener('input', function(e) {
-                    this.value = this.value.replace(/[^0-9]/g, '');
-                    if (this.value.length > 10) {
-                        this.value = this.value.slice(0, 10);
-                    }
-                });
-            }
-
-            // Name - only letters and spaces, max 30
-            const nameInput = document.getElementById('fullName');
-            if (nameInput) {
-                nameInput.addEventListener('input', function(e) {
-                    this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
-                    if (this.value.length > 30) {
-                        this.value = this.value.slice(0, 30);
-                    }
-                });
-            }
+            CareerForm.init();
         });
+
+        // Global function for inline onclick
+        function sendWhatsAppCareer() {
+            CareerForm.sendToWhatsApp();
+        }
     </script>
 </body>
 </html>

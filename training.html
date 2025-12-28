@@ -27,7 +27,7 @@
       <p>Let's Build The Dream</p>
     </div>
 
-            <nav>
+    <nav>
       <ul class="sidebar-nav">
         <li><a href="index.html">Home</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -73,10 +73,8 @@
   <main>
     <section class="training-section">
       <h2>📚 Training</h2>
-      <h3> 👷‍♂️Training & Skill Development</h3>
-      <p>
-        Dream Smart Construction strongly believes in developing skilled professionals for the construction industry.
-      </p>
+      <h3>👷‍♂️Training & Skill Development</h3>
+      <p>Dream Smart Construction strongly believes in developing skilled professionals for the construction industry.</p>
 
       <h3>👨🏻‍🎓Available Training Programs</h3>
       <ul>
@@ -88,14 +86,14 @@
         <li>Quality Control & Assurance</li>
       </ul>
 
-      <h3> ⚙︎ How It Works</h3>
+      <h3>⚙️ How It Works</h3>
       <ul>
         <li>Browse available training programs</li>
         <li>Fill out the enrollment form</li>
         <li>Submit your details</li>
       </ul>
 
-      <h3><strong> 👨🏼‍💻After submission:</strong></h3>
+      <h3><strong>👨🏼‍💻After submission:</strong></h3>
       <ul>
         <li>Our team will contact you for further guidance</li>
         <li>All training applications are reviewed by the Super Admin</li>
@@ -156,28 +154,10 @@
       
       <form class="enrollment-form" id="enrollmentForm" novalidate>
         <label for="enrollName">Full Name <span style="color: red;">*</span></label>
-        <input 
-          type="text" 
-          id="enrollName" 
-          name="name" 
-          pattern="^[a-zA-Z\s]{2,30}$" 
-          minlength="2" 
-          maxlength="30" 
-          placeholder="Enter your full name (2-30 characters)" 
-          autocomplete="name"
-          required 
-          aria-required="true">
-       
+        <input type="text" id="enrollName" name="name" pattern="^[a-zA-Z\s]{2,30}$" minlength="2" maxlength="30" placeholder="Enter your full name (2-30 characters)" autocomplete="name" required aria-required="true">
 
         <label for="enrollEmail">Email Address <span style="color: red;">*</span></label>
-        <input 
-          type="email" 
-          id="enrollEmail" 
-          name="email" 
-          placeholder="Enter your email address" 
-          autocomplete="email"
-          required 
-          aria-required="true">
+        <input type="email" id="enrollEmail" name="email" placeholder="Enter your email address" autocomplete="email" required aria-required="true">
         <small style="color: #666; font-size: 0.85rem; margin-top: -0.5rem; display: block;">Enter a valid email address</small>
 
         <label for="enrollMobile">Mobile Number <span style="color: red;">*</span></label>
@@ -203,18 +183,8 @@
             <option value="+82">+82 (South Korea)</option>
             <option value="+86">+86 (China)</option>
           </select>
-          <input 
-            type="tel" 
-            id="enrollMobile" 
-            name="mobile" 
-            pattern="[0-9]{10}" 
-            placeholder="Enter 10-digit mobile number" 
-            autocomplete="tel"
-            maxlength="10"
-            required 
-            aria-required="true">
+          <input type="tel" id="enrollMobile" name="mobile" pattern="[0-9]{10}" placeholder="Enter 10-digit mobile number" autocomplete="tel" maxlength="10" required aria-required="true">
         </div>
-       
 
         <label for="enrollPosition">Position Applied For <span style="color: red;">*</span></label>
         <select id="enrollPosition" name="position" required aria-required="true">
@@ -287,11 +257,11 @@
       <h2>Login</h2>
       <form id="loginForm">
         <div class="form-group">
-          <label for="loginEmail">Email:<span class="required">*</label>
+          <label for="loginEmail">Email:<span class="required">*</span></label>
           <input type="email" id="loginEmail" name="email" autocomplete="email" required>
         </div>
         <div class="form-group">
-          <label for="loginPassword">Password:<span class="required">*</label>
+          <label for="loginPassword">Password:<span class="required">*</span></label>
           <input type="password" id="loginPassword" name="password" autocomplete="current-password" required>
         </div>
         <div class="form-options">
@@ -320,20 +290,20 @@
       <form id="signupForm">
         <div class="form-row">
           <div class="form-group">
-            <label for="firstName">First Name:<span class="required">*</label>
+            <label for="firstName">First Name:<span class="required">*</span></label>
             <input type="text" id="firstName" name="firstName" autocomplete="given-name" required>
           </div>
           <div class="form-group">
-            <label for="lastName">Last Name:<span class="required">*</label>
+            <label for="lastName">Last Name:<span class="required">*</span></label>
             <input type="text" id="lastName" name="lastName" autocomplete="family-name" required>
           </div>
         </div>
         <div class="form-group">
-          <label for="signupEmail">Email:<span class="required">*</label>
+          <label for="signupEmail">Email:<span class="required">*</span></label>
           <input type="email" id="signupEmail" name="email" autocomplete="email" required>
         </div>
         <div class="form-group">
-          <label for="phone">Phone Number:<span class="required">*</label>
+          <label for="phone">Phone Number:<span class="required">*</span></label>
           <div class="phone-input">
             <select id="countryCode" name="countryCode" aria-label="Country code" required>
               <option value="+91" selected>+91 India</option>
@@ -352,16 +322,16 @@
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="signupPassword">Password:<span class="required">*</label>
+            <label for="signupPassword">Password:<span class="required">*</span></label>
             <input type="password" id="signupPassword" name="password" minlength="8" autocomplete="new-password" required>
           </div>
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password:<span class="required">*</label>
+            <label for="confirmPassword">Confirm Password:<span class="required">*</span></label>
             <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required>
           </div>
         </div>
         <div class="form-group">
-          <label for="userType">I am a:<span class="required">*</label>
+          <label for="userType">I am a:<span class="required">*</span></label>
           <select id="userType" name="userType" required>
             <option value="">Select...</option>
             <option value="client">Client</option>
@@ -382,155 +352,155 @@
   <script src="script.js"></script>
   
   <script>
-    // Training Enrollment Modal Script
-    let selectedCourse = '';
-
-    function openEnrollmentModal(courseName) {
-      selectedCourse = courseName;
-      const modal = document.getElementById('enrollmentModal');
-      const courseDisplay = document.getElementById('selectedCourse');
+    (function() {
+      'use strict';
       
-      if (modal && courseDisplay) {
-        modal.style.display = 'flex';
-        modal.setAttribute('aria-hidden', 'false');
-        courseDisplay.textContent = courseName;
-        document.body.style.overflow = 'hidden';
-      }
-    }
+      let selectedCourse = '';
+      const WHATSAPP_NUMBER = "919815969240";
 
-    function closeEnrollmentModal() {
-      const modal = document.getElementById('enrollmentModal');
-      if (modal) {
-        modal.style.display = 'none';
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = 'auto';
-        document.getElementById('enrollmentForm').reset();
-        selectedCourse = '';
-      }
-    }
+      const elements = {
+        modal: null,
+        courseDisplay: null,
+        form: null,
+        nameInput: null,
+        emailInput: null,
+        mobileInput: null,
+        positionSelect: null
+      };
 
-    function validateEnrollmentForm() {
-      const name = document.getElementById('enrollName').value.trim();
-      const email = document.getElementById('enrollEmail').value.trim();
-      const mobile = document.getElementById('enrollMobile').value.trim();
-      const position = document.getElementById('enrollPosition').value;
-
-      // Name validation (2-30 characters, letters and spaces only)
-      const namePattern = /^[a-zA-Z\s]{2,30}$/;
-      if (!namePattern.test(name)) {
-        alert('❌ Name must be 2-30 characters and contain only letters and spaces.');
-        document.getElementById('enrollName').focus();
-        return false;
+      function initElements() {
+        elements.modal = document.getElementById('enrollmentModal');
+        elements.courseDisplay = document.getElementById('selectedCourse');
+        elements.form = document.getElementById('enrollmentForm');
+        elements.nameInput = document.getElementById('enrollName');
+        elements.emailInput = document.getElementById('enrollEmail');
+        elements.mobileInput = document.getElementById('enrollMobile');
+        elements.positionSelect = document.getElementById('enrollPosition');
       }
 
-      // Email validation
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        alert('❌ Please enter a valid email address.');
-        document.getElementById('enrollEmail').focus();
-        return false;
+      function openEnrollmentModal(courseName) {
+        if (!elements.modal) initElements();
+        selectedCourse = courseName;
+        
+        if (elements.modal && elements.courseDisplay) {
+          elements.modal.style.display = 'flex';
+          elements.modal.setAttribute('aria-hidden', 'false');
+          elements.courseDisplay.textContent = courseName;
+          document.body.style.overflow = 'hidden';
+        }
       }
 
-      // Mobile number validation (exactly 10 digits)
-      const mobilePattern = /^[0-9]{10}$/;
-      if (!mobilePattern.test(mobile)) {
-        alert('❌ Mobile number must be exactly 10 digits (without country code).');
-        document.getElementById('enrollMobile').focus();
-        return false;
+      function closeEnrollmentModal() {
+        if (!elements.modal) initElements();
+        
+        if (elements.modal) {
+          elements.modal.style.display = 'none';
+          elements.modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = 'auto';
+          if (elements.form) elements.form.reset();
+          selectedCourse = '';
+        }
       }
 
-      // Position validation
-      if (position === '') {
-        alert('❌ Please select a position you are applying for.');
-        document.getElementById('enrollPosition').focus();
-        return false;
+      const patterns = {
+        name: /^[a-zA-Z\s]{2,30}$/,
+        email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        mobile: /^[0-9]{10}$/
+      };
+
+      function validateEnrollmentForm() {
+        const name = elements.nameInput.value.trim();
+        const email = elements.emailInput.value.trim();
+        const mobile = elements.mobileInput.value.trim();
+        const position = elements.positionSelect.value;
+
+        if (!patterns.name.test(name)) {
+          alert('❌ Name must be 2-30 characters and contain only letters and spaces.');
+          elements.nameInput.focus();
+          return false;
+        }
+
+        if (!patterns.email.test(email)) {
+          alert('❌ Please enter a valid email address.');
+          elements.emailInput.focus();
+          return false;
+        }
+
+        if (!patterns.mobile.test(mobile)) {
+          alert('❌ Mobile number must be exactly 10 digits (without country code).');
+          elements.mobileInput.focus();
+          return false;
+        }
+
+        if (!position) {
+          alert('❌ Please select a position you are applying for.');
+          elements.positionSelect.focus();
+          return false;
+        }
+
+        return true;
       }
 
-      return true;
-    }
+      function sendWhatsAppEnrollment() {
+        if (!elements.form) initElements();
+        
+        if (!elements.form.checkValidity()) {
+          elements.form.reportValidity();
+          return;
+        }
 
-    function sendWhatsAppEnrollment() {
-      const form = document.getElementById('enrollmentForm');
-      
-      // HTML5 validation
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
+        if (!validateEnrollmentForm()) return;
+
+        const data = {
+          name: elements.nameInput.value.trim(),
+          email: elements.emailInput.value.trim(),
+          countryCode: document.getElementById('enrollCountryCode').value,
+          mobile: elements.mobileInput.value.trim(),
+          position: elements.positionSelect.value
+        };
+
+        const message = `*🎓 New Training Enrollment Application*\n\n*Course:* ${selectedCourse}\n*Name:* ${data.name}\n*Email:* ${data.email}\n*Mobile:* ${data.countryCode} ${data.mobile}\n*Position Applied For:* ${data.position}\n\n_Submitted via Dream Smart Training Portal_`;
+        
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        
+        alert('✅ Your enrollment form is being sent to WhatsApp!\n\nYou will be redirected now.');
+        window.location.href = url;
+        
+        setTimeout(closeEnrollmentModal, 1000);
       }
 
-      // Custom validation
-      if (!validateEnrollmentForm()) {
-        return;
+      function setupInputValidation() {
+        if (elements.mobileInput) {
+          elements.mobileInput.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, '').slice(0, 10);
+          });
+        }
+
+        if (elements.nameInput) {
+          elements.nameInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^a-zA-Z\s]/g, '').slice(0, 30);
+          });
+        }
       }
 
-      const phone = "919815969240";
-      const name = document.getElementById('enrollName').value.trim();
-      const email = document.getElementById('enrollEmail').value.trim();
-      const countryCode = document.getElementById('enrollCountryCode').value;
-      const mobile = document.getElementById('enrollMobile').value.trim();
-      const position = document.getElementById('enrollPosition').value;
-
-      const message = encodeURIComponent(
-        `*🎓 New Training Enrollment Application*\n\n` + 
-        `*Course:* ${selectedCourse}\n` +
-        `*Name:* ${name}\n` + 
-        `*Email:* ${email}\n` +
-        `*Mobile:* ${countryCode} ${mobile}\n` +
-        `*Position Applied For:* ${position}\n\n` +
-        `_Submitted via Dream Smart Training Portal_`
-      );
-
-      const url = `https://wa.me/${phone}?text=${message}`;
-      
-      // Show success message
-      alert('✅ Your enrollment form is being sent to WhatsApp!\n\nYou will be redirected now.');
-      
-      // Redirect to WhatsApp
-      window.location.href = url;
-      
-      // Reset form and close modal after a short delay
-      setTimeout(() => {
-        closeEnrollmentModal();
-      }, 1000);
-    }
-
-    // Close modal when clicking outside
-    window.addEventListener('click', function(event) {
-      const modal = document.getElementById('enrollmentModal');
-      if (event.target === modal) {
-        closeEnrollmentModal();
-      }
-    });
-
-    // Real-time mobile number validation
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileInput = document.getElementById('enrollMobile');
-      if (mobileInput) {
-        mobileInput.addEventListener('input', function(e) {
-          // Remove non-numeric characters
-          this.value = this.value.replace(/[^0-9]/g, '');
-          
-          // Limit to 10 digits
-          if (this.value.length > 10) {
-            this.value = this.value.slice(0, 10);
-          }
-        });
+      function handleModalClick(e) {
+        if (e.target === elements.modal) {
+          closeEnrollmentModal();
+        }
       }
 
-      // Real-time name validation
-      const nameInput = document.getElementById('enrollName');
-      if (nameInput) {
-        nameInput.addEventListener('input', function(e) {
-          // Remove numbers and special characters, keep only letters and spaces
-          this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
-          
-          // Limit to 30 characters
-          if (this.value.length > 30) {
-            this.value = this.value.slice(0, 30);
-          }
-        });
-      }
-    });
+      document.addEventListener('DOMContentLoaded', function() {
+        initElements();
+        setupInputValidation();
+        if (elements.modal) {
+          elements.modal.addEventListener('click', handleModalClick);
+        }
+      });
+
+      window.openEnrollmentModal = openEnrollmentModal;
+      window.closeEnrollmentModal = closeEnrollmentModal;
+      window.sendWhatsAppEnrollment = sendWhatsAppEnrollment;
+    })();
   </script>
 </body>
 </html>

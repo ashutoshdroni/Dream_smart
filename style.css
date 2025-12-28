@@ -23,7 +23,7 @@
     --transition-slow: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/*               ====== CUSTOM SCROLLBAR               ====== */
+/*====== CUSTOM SCROLLBAR ======*/
 ::-webkit-scrollbar {
     width: 14px;
     height: 14px;
@@ -47,7 +47,7 @@
     box-shadow: 0 4px 12px rgba(255,140,66,0.6);
 }
 
-/*               ====== BASE STYLES               ====== */
+/*====== BASE STYLES ======*/
 html {
     height: 100%;
 }
@@ -99,7 +99,7 @@ main {
     flex: 1 0 auto;
 }
 
-/*               ====== HEADER STYLES               ====== */
+/*====== HEADER STYLES ======*/
 header {
     background: white;
     box-shadow: var(--shadow-md);
@@ -264,7 +264,7 @@ header::after {
     }
 }
 
-/*               ====== HERO SECTION               ====== */
+/*====== HERO SECTION ======*/
 .hero {
     position: relative;
     height: 500px;
@@ -345,7 +345,7 @@ header::after {
     to { transform: rotate(360deg); }
 }
 
-/*               ====== SECTION STYLES               ====== */
+/*====== SECTION TITLES ======*/
 .section-title {
     width: clamp(90%, 80%, 800px);
     max-width: 800px;
@@ -362,8 +362,8 @@ header::after {
     letter-spacing: 0.5px;
 }
 
-/*               ====== UNIVERSAL CARD STYLES               ====== */
-.team-card, .project-card, .training-card, .expertise-card, .testimonial-card {
+/*====== UNIVERSAL CARD STYLES ======*/
+.team-card, .project-card, .training-card, .expertise-card {
     position: relative;
     transition: var(--transition-slow);
     background: white;
@@ -407,7 +407,7 @@ header::after {
     }
 }
 
-/*               ====== TESTIMONIALS               ====== */
+/*====== TESTIMONIALS ======*/
 .testimonials {
     padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 5vw, 5%);
     text-align: center;
@@ -429,20 +429,6 @@ header::after {
     cursor: pointer;
 }
 
-
-
-@keyframes playButtonPulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.1); }
-}
-
-.testimonial-card:hover::after, .video-placeholder:hover::after, .video-container:hover::after {
-    background: rgba(255, 140, 66, 0.95);
-    transform: translate(-50%, -50%) scale(1.15);
-    box-shadow: 0 12px 32px rgba(255, 140, 66, 0.6);
-    border-color: rgba(255,255,255,0.6);
-}
-
 .testimonial-card video, .testimonial-card iframe {
     width: 100%;
     height: 100%;
@@ -451,7 +437,7 @@ header::after {
     display: block;
 }
 
-/*               ====== TEAMS               ====== */
+/*====== TEAMS ======*/
 .teams {
     padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 5vw, 5%);
     text-align: center;
@@ -583,7 +569,7 @@ header::after {
     box-shadow: var(--shadow-sm);
 }
 
-/*               ====== EXPERTISE               ====== */
+/*====== EXPERTISE ======*/
 .expertise {
     padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 5vw, 5%);
     text-align: center;
@@ -647,7 +633,7 @@ header::after {
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
 }
 
-/*               ====== PROJECTS               ====== */
+/*====== PROJECTS ======*/
 .projects {
     padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 5vw, 5%);
     text-align: center;
@@ -701,16 +687,7 @@ header::after {
     box-shadow: 0 16px 48px rgba(0,0,0,0.25);
 }
 
-/*               ====== PROJECT CARDS               ====== */
-.projects-section {
-    max-width: 1200px;
-    margin: clamp(1.5rem, 3vw, 2rem) auto;
-    padding: clamp(1.5rem, 4vw, 2.5rem);
-    background: white;
-    border-radius: 24px;
-    box-shadow: var(--shadow-lg);
-}
-
+/*====== PROJECT CARDS (Inside .projects-section) ======*/
 .projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -867,7 +844,7 @@ header::after {
     transform: translateY(-1px) scale(1.02);
 }
 
-/*               ====== FOOTER               ====== */
+/*====== FOOTER ======*/
 footer {
     background: linear-gradient(135deg, var(--secondary-orange) 0%, var(--gold) 25%, var(--primary-orange) 50%, var(--secondary-orange) 75%, var(--gold) 100%);
     background-size: 400% 400%;
@@ -992,7 +969,7 @@ footer {
     font-size: clamp(0.85rem, 1.5vw, 0.95rem);
 }
 
-/*               ====== MODAL STYLES               ====== */
+/*====== MODAL STYLES (Shared: Login, Signup, Enrollment) ======*/
 .modal, .project-modal, .team-profile-modal, .enrollment-modal {
     display: none;
     position: fixed;
@@ -1001,62 +978,96 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    animation: fadeIn 0.3s;
+    background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(44,62,80,0.85) 100%);
+    animation: modalBackdropFade 0.4s ease-out;
     overflow-y: auto;
-    backdrop-filter: blur(10px);
-}
-
-.modal.active, .project-modal.active, .team-profile-modal.active, .enrollment-modal.active {
-    display: flex;
+    backdrop-filter: blur(15px) saturate(150%);
     align-items: center;
     justify-content: center;
     padding: 2rem 1rem;
-    animation: modalFadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes modalFadeIn {
+@keyframes modalBackdropFade {
     0% {
         opacity: 0;
         backdrop-filter: blur(0px);
     }
     100% {
         opacity: 1;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(15px) saturate(150%);
     }
 }
 
+.modal.active, .project-modal.active, .team-profile-modal.active, .enrollment-modal.active,
+.modal[style*="display: flex"] {
+    display: flex !important;
+}
+
 .modal-content, .project-modal-content, .team-profile-content, .enrollment-form-container {
-    background: white;
-    margin: clamp(2%, 3%, 5%) auto;
-    padding: clamp(1.5rem, 4vw, 2.5rem);
-    border-radius: 24px;
-    width: clamp(90%, 90%, 600px);
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    margin: auto;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: 32px;
+    width: 95%;
     max-width: 600px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    animation: modalSlideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 
+        0 25px 70px rgba(255, 140, 66, 0.4),
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        inset 0 -2px 20px rgba(255, 140, 66, 0.1);
+    animation: modalSlideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+.modal-content::before, .enrollment-form-container::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 32px;
+    padding: 3px;
+    background: linear-gradient(135deg, 
+        var(--primary-orange) 0%, 
+        var(--gold) 25%, 
+        var(--secondary-orange) 50%, 
+        var(--primary-orange) 75%,
+        var(--gold) 100%);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderGradientFlow 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes borderGradientFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 
 @keyframes modalSlideUp {
     0% {
-        transform: translateY(100px) scale(0.9);
+        transform: translateY(100px) scale(0.85);
         opacity: 0;
+        filter: blur(10px);
+    }
+    60% {
+        transform: translateY(-10px) scale(1.02);
+        opacity: 0.8;
+        filter: blur(0px);
     }
     100% {
         transform: translateY(0) scale(1);
         opacity: 1;
+        filter: blur(0px);
     }
 }
 
-.modal-content::-webkit-scrollbar, .project-modal-content::-webkit-scrollbar, .team-profile-content::-webkit-scrollbar {
+.modal-content::-webkit-scrollbar, .project-modal-content::-webkit-scrollbar, 
+.team-profile-content::-webkit-scrollbar, .enrollment-form-container::-webkit-scrollbar {
     width: 8px;
 }
 
@@ -1084,46 +1095,43 @@ footer {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: var(--transition-slow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(255, 140, 66, 0.4);
     border: 3px solid white;
     font-weight: bold;
     line-height: 1;
-    animation: closeButtonRotate 10s linear infinite;
 }
 
-@keyframes closeButtonRotate {
-    0%, 90%, 100% { transform: rotate(0deg); }
-    95% { transform: rotate(90deg); }
-}
-
-.close:hover, .modal-close-btn:hover, .modal-close:hover {
-    background: linear-gradient(135deg, #FF4500, var(--primary-orange));
-    transform: rotate(90deg) scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 69, 0, 0.6);
-}
-
-.close::after, .modal-close-btn::after, .modal-close::after {
+.close::before, .modal-close-btn::before, .modal-close::before {
     content: '';
     position: absolute;
     inset: -8px;
     border-radius: 50%;
     background: conic-gradient(from 0deg, var(--primary-orange), var(--gold), var(--secondary-orange), var(--primary-orange));
     opacity: 0;
-    animation: closeGlow 3s linear infinite;
+    transition: all 0.3s ease;
+    animation: closeButtonSpin 3s linear infinite;
     z-index: -1;
 }
 
-@keyframes closeGlow {
-    0%, 100% {
-        opacity: 0;
-        transform: scale(0.8) rotate(0deg);
-    }
-    50% {
-        opacity: 0.5;
-        transform: scale(1.2) rotate(180deg);
-    }
+@keyframes closeButtonSpin {
+    0% { transform: rotate(0deg); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: rotate(360deg); opacity: 0; }
+}
+
+.close:hover, .modal-close-btn:hover, .modal-close:hover {
+    transform: rotate(90deg) scale(1.15);
+    box-shadow: 
+        0 12px 32px rgba(255, 69, 0, 0.7),
+        0 6px 16px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #FF6347 0%, #FF4500 100%);
+}
+
+.close:hover::before, .modal-close-btn:hover::before, .modal-close:hover::before {
+    opacity: 0.8;
+    transform: rotate(180deg) scale(1.3);
 }
 
 .modal-logo {
@@ -1141,6 +1149,12 @@ footer {
     margin: 0 auto 1rem;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
     display: block;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .modal-logo h1 {
@@ -1159,75 +1173,197 @@ footer {
 
 .modal-content h2, .enrollment-form-container h2 {
     text-align: center;
-    color: var(--text-dark);
+    font-size: clamp(1.8rem, 5vw, 2.3rem);
     margin-bottom: 2rem;
     margin-top: 0;
-    font-size: clamp(1.5rem, 4vw, 2rem);
-    font-weight: 700;
+    background: linear-gradient(135deg, 
+        var(--dark-blue) 0%, 
+        var(--primary-orange) 30%, 
+        var(--gold) 60%, 
+        var(--secondary-orange) 80%, 
+        var(--dark-blue) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleGradient 3s linear infinite;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 1rem;
 }
 
-/*               ====== FORM STYLES               ====== */
+@keyframes titleGradient {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.modal-content h2::after, .enrollment-form-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-orange), var(--gold), var(--primary-orange), transparent);
+    border-radius: 2px;
+    animation: underlineGlow 2s ease-in-out infinite;
+}
+
+@keyframes underlineGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--primary-orange);
+        width: 80px;
+    }
+    50% {
+        box-shadow: 0 0 20px var(--gold);
+        width: 120px;
+    }
+}
+
+/*====== FORM STYLES (Shared: Contact, Career, Enrollment, Login, Signup) ======*/
 .form-group, .form-group-enhanced {
     margin-bottom: 1.5rem;
 }
 
-.form-group label, .form-group-enhanced label, .contact-form label, .career-form label, .enrollment-form label {
+.form-group label, .form-group-enhanced label, .contact-form label, 
+.career-form label, .enrollment-form label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
     color: var(--text-dark);
-    font-weight: 600;
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    font-weight: 700;
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    letter-spacing: 0.3px;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.form-group label::before, .contact-form label::before, 
+.career-form label::before, .enrollment-form label::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary-orange);
+    font-size: 1.2em;
+    animation: labelArrow 2s ease-in-out infinite;
+}
+
+@keyframes labelArrow {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+}
+
+.form-group label span, .contact-form label span, 
+.career-form label span, .enrollment-form label span {
+    color: #FF0000;
+    font-weight: bold;
+    margin-left: 0.2rem;
 }
 
 .form-group input, .form-group select, .form-group textarea,
 .contact-form input, .contact-form select, .contact-form textarea,
-.career-form input, .career-form select, .enrollment-form input {
+.career-form input, .career-form select, .career-form textarea,
+.enrollment-form input, .enrollment-form select {
     width: 100%;
-    padding: clamp(0.7rem, 1.5vw, 0.9rem);
-    border: 2px solid var(--border-color);
-    border-radius: 12px;
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
-    transition: var(--transition);
-    background: var(--bg-light);
+    padding: clamp(0.9rem, 2vw, 1.1rem);
+    border: 3px solid var(--border-color);
+    border-radius: 16px;
+    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
     font-family: inherit;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.05),
+        0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form textarea, .career-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.form-group input:hover, .form-group select:hover, .form-group textarea:hover,
+.contact-form input:hover, .contact-form select:hover, .contact-form textarea:hover,
+.career-form input:hover, .career-form select:hover, .career-form textarea:hover,
+.enrollment-form input:hover, .enrollment-form select:hover {
+    border-color: rgba(255, 140, 66, 0.4);
+    background: white;
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.05),
+        0 4px 12px rgba(255, 140, 66, 0.2);
 }
 
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus,
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus,
-.career-form input:focus, .career-form select:focus, .enrollment-form input:focus {
+.career-form input:focus, .career-form select:focus, .career-form textarea:focus,
+.enrollment-form input:focus, .enrollment-form select:focus {
     outline: none;
     border-color: var(--primary-orange);
     background: white;
-    box-shadow: 0 0 0 3px rgba(255,140,66,0.1);
-    animation: inputRipple 0.6s ease-out;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 0 0 5px rgba(255, 140, 66, 0.15),
+        0 8px 20px rgba(255, 140, 66, 0.3),
+        inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    animation: inputFocusPulse 1.5s ease-in-out infinite;
 }
 
-@keyframes inputRipple {
-    0% { box-shadow: 0 0 0 0 rgba(255,140,66,0.7); }
-    100% { box-shadow: 0 0 0 15px rgba(255,140,66,0); }
-}
-
-.contact-form textarea {
-    min-height: 140px;
-    resize: vertical;
+@keyframes inputFocusPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 0 5px rgba(255, 140, 66, 0.15),
+            0 8px 20px rgba(255, 140, 66, 0.3),
+            inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    50% {
+        box-shadow: 
+            0 0 0 8px rgba(255, 140, 66, 0.25),
+            0 12px 30px rgba(255, 140, 66, 0.4),
+            inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
 }
 
 .phone-input {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
     align-items: stretch;
 }
 
 .phone-input select {
     flex: 0 0 auto;
-    min-width: clamp(100px, 22%, 130px);
-    max-width: 130px;
+    min-width: clamp(110px, 25%, 140px);
+    max-width: 140px;
     cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(145deg, #ffffff, #f0f4f8);
 }
 
 .phone-input input {
     flex: 1;
     min-width: 0;
+}
+
+.form-group small, .contact-form small, .career-form small, .enrollment-form small {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: -0.8rem;
+    display: block;
+    padding-left: 1rem;
+    font-style: italic;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus + small, .form-group select:focus + small,
+.contact-form input:focus + small, .contact-form select:focus + small,
+.contact-form textarea:focus + small,
+.career-form input:focus + small, .career-form select:focus + small,
+.career-form textarea:focus + small,
+.enrollment-form input:focus + small, .enrollment-form select:focus + small {
+    color: var(--primary-orange);
+    opacity: 1;
+    transform: translateX(5px);
 }
 
 .career-form input[type="file"] {
@@ -1242,41 +1378,71 @@ footer {
     background: #fffef7;
 }
 
+/*====== SUBMIT BUTTONS (Shared styling) ======*/
 .btn-submit, .enroll-btn, .contact-form button, .career-form button, .enrollment-form button {
     width: 100%;
-    padding: clamp(0.8rem, 2vw, 1rem);
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+    padding: clamp(1rem, 2.5vw, 1.3rem);
     color: white;
     border: none;
     border-radius: 50px;
-    font-size: clamp(1rem, 2vw, 1.1rem);
-    font-weight: 600;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    font-weight: 700;
     cursor: pointer;
-    transition: var(--transition-slow);
-    box-shadow: var(--shadow-md);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+.btn-submit, .contact-form button {
+    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
+    background-size: 200% auto;
+    box-shadow: 
+        0 8px 24px rgba(255, 140, 66, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .career-form button {
     background: linear-gradient(135deg, var(--gold) 0%, #e6a700 100%);
     color: var(--dark-blue);
     box-shadow: 0 4px 16px rgba(244, 196, 48, 0.4);
-    margin-top: 1.5rem;
 }
 
-.enrollment-form button {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    margin-top: 1rem;
+.enrollment-form button, .enroll-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%);
+    background-size: 200% auto;
+    box-shadow: 
+        0 8px 24px rgba(37, 211, 102, 0.4),
+        0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.btn-submit:hover, .enroll-btn:hover, .contact-form button:hover, .career-form button:hover, .enrollment-form button:hover {
-    transform: translateY(-5px) scale(1.05);
+.btn-submit::after, .enroll-btn::after, .contact-form button::after, 
+.career-form button::after, .enrollment-form button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
 }
 
-.contact-form button:hover {
-    box-shadow: 0 15px 40px rgba(255,140,66,0.5);
+.btn-submit:hover, .enroll-btn:hover, .contact-form button:hover, 
+.career-form button:hover, .enrollment-form button:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.btn-submit:hover, .contact-form button:hover {
+    background-position: right center;
+    box-shadow: 
+        0 12px 35px rgba(255, 140, 66, 0.6),
+        0 6px 18px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(255, 140, 66, 0.3);
 }
 
 .career-form button:hover {
@@ -1284,21 +1450,32 @@ footer {
     box-shadow: 0 15px 40px rgba(244, 196, 48, 0.6);
 }
 
-.enrollment-form button:hover {
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
-    background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+.enrollment-form button:hover, .enroll-btn:hover {
+    background-position: right center;
+    box-shadow: 
+        0 12px 35px rgba(37, 211, 102, 0.6),
+        0 6px 18px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(37, 211, 102, 0.3);
 }
 
-.btn-submit::after, .enroll-btn::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
-    transform: rotate(45deg);
-    animation: shimmerEffect 3s infinite;
+.btn-submit:hover::after, .enroll-btn:hover::after, .contact-form button:hover::after,
+.career-form button:hover::after, .enrollment-form button:hover::after {
+    width: 400px;
+    height: 400px;
+}
+
+.btn-submit:active, .enroll-btn:active, .contact-form button:active,
+.career-form button:active, .enrollment-form button:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.btn-submit:disabled, .contact-form button:disabled, 
+.career-form button:disabled, .enrollment-form button:disabled {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    cursor: not-allowed;
+    transform: none;
+    opacity: 0.7;
+    animation: none;
 }
 
 .form-row {
@@ -1344,7 +1521,28 @@ footer {
     text-decoration: underline;
 }
 
-/*               ====== PROFILE MODAL               ====== */
+.form-group input.success, .contact-form input.success, 
+.career-form input.success, .contact-form textarea.success, 
+.career-form textarea.success {
+    border-color: #27ae60;
+    background: rgba(39, 174, 96, 0.05);
+}
+
+.form-group input.error, .contact-form input.error, 
+.career-form input.error, .contact-form textarea.error, 
+.career-form textarea.error {
+    border-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.05);
+    animation: shakeError 0.5s;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/*====== PROFILE MODAL ======*/
 .profile-header {
     text-align: center;
     margin: -1.5rem -1.5rem 2rem -1.5rem;
@@ -1582,7 +1780,7 @@ footer {
     color: var(--text-light);
 }
 
-/*  ====== MOBILE MENU ====== */
+/*====== MOBILE MENU ======*/
 .menu-toggle {
     position: fixed;
     top: 15px;
@@ -1757,7 +1955,7 @@ footer {
     box-shadow: var(--shadow-md);
 }
 
-/* ====== PARTNERS SECTION ====== */
+/*====== PARTNERS SECTION ======*/
 .partners_section {
     flex-basis: 100%;
     margin-top: clamp(2rem, 4vw, 3rem);
@@ -1869,7 +2067,7 @@ footer {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
-/* ====== PROGRESS BAR ====== */
+/*====== PROGRESS BAR ======*/
 #progress-container {
     width: 100%;
     background-color: #f1f1f1;
@@ -1898,17 +2096,46 @@ footer {
     100% { opacity: 1; }
 }
 
-/*====== CONTENT PAGES ====== */
+/*====== CONTENT PAGES (Enhanced A4 Container Style) ======*/
 .projects-section, .contact-section, .career-section, .training-section, .about-container {
     max-width: 1200px;
     margin: clamp(1.5rem, 3vw, 2rem) auto;
-    padding: clamp(1.5rem, 4vw, 2.5rem);
-    background: white;
-    border-radius: 24px;
-    box-shadow: var(--shadow-lg);
+    padding: clamp(2.5rem, 5vw, 3.5rem);
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 32px;
+    box-shadow: 
+        0 25px 70px rgba(255, 140, 66, 0.4),
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        inset 0 -2px 20px rgba(255, 140, 66, 0.1);
+    position: relative;
+    border: 3px solid transparent;
+    background-clip: padding-box;
 }
 
-.projects-section h1, .contact-header h2, .career-section h2, .training-section h2, .about-text h1 {
+.projects-section::before, .contact-section::before, .career-section::before, 
+.training-section::before, .about-container::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 32px;
+    padding: 3px;
+    background: linear-gradient(135deg, 
+        var(--primary-orange) 0%, 
+        var(--gold) 25%, 
+        var(--secondary-orange) 50%, 
+        var(--primary-orange) 75%,
+        var(--gold) 100%);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: borderGradientFlow 4s linear infinite;
+    z-index: -1;
+}
+
+.projects-section h1, .contact-header h2, .career-section h2, 
+.training-section h2, .about-text h1 {
     text-align: center;
     color: var(--dark-blue);
     margin-bottom: 1.5rem;
@@ -1933,7 +2160,7 @@ footer {
     font-size: clamp(1.3rem, 3vw, 1.8rem);
 }
 
-.projects-section h3, .about-text h3, .training-section h3, .career-section h3 {
+.projects-section h3, .about-text h3, .training-section h3, .career-section h3, .contact-section h3 {
     margin-top: 1.5rem;
     color: var(--text-dark);
     border-left: 5px solid var(--dark-blue);
@@ -1941,7 +2168,7 @@ footer {
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
 }
 
-.career-section h3 {
+.career-section h3, .contact-section h3 {
     border-left-color: var(--gold);
     background: linear-gradient(to right, #fffef7, transparent);
 }
@@ -1952,16 +2179,6 @@ footer {
     color: var(--text-light);
     font-size: clamp(0.95rem, 1.5vw, 1.05rem);
 }
-
-.contact-section h3 {
-    
-    margin-top: 1.5rem;
-    color: var(--text-dark);
-    border-left: 5px solid var(--gold);
-    padding-left: 1rem;
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-}
-
 
 .projects-section ul, .about-text ul, .training-section ul {
     list-style: disc;
@@ -1994,7 +2211,7 @@ footer {
     box-shadow: 0 12px 40px rgba(0,0,0,0.15);
 }
 
-/*   ====== TRAINING CARDS  ====== */
+/*====== TRAINING CARDS ======*/
 .training-cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2095,7 +2312,7 @@ footer {
     transform: translateY(-1px) scale(1.02);
 }
 
-/*  ====== ABOUT SECTION ====== */
+/*====== ABOUT SECTION ======*/
 .about-container {
     display: flex;
     flex-wrap: wrap;
@@ -2128,7 +2345,7 @@ footer {
     box-shadow: var(--shadow-lg);
 }
 
-/*  ====== UTILITY CLASSES====== */
+/*====== UTILITY CLASSES ======*/
 .glass-effect {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(20px) saturate(180%);
@@ -2147,7 +2364,7 @@ footer {
     100% { background-position: 200% 0; }
 }
 
-/*   ====== RESPONSIVE DESIGN ====== */
+/*====== RESPONSIVE DESIGN ======*/
 @media screen and (max-width: 1224px) {
     .navbar {
         padding: 0.8rem clamp(1rem, 3vw, 3%);
@@ -2310,7 +2527,7 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .project-modal-content,
+    .modal-content, .project-modal-content,
     .team-profile-content,
     .enrollment-form-container {
         width: 95%;
@@ -2402,9 +2619,22 @@ footer {
     .project-card {
         min-height: 340px;
     }
+
+    .modal-content, .enrollment-form-container, .contact-section, .career-section {
+        padding: 1.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    .close, .modal-close {
+        width: 45px;
+        height: 45px;
+        font-size: 2rem;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
 }
 
-/*====== ACCESSIBILITY ====== */
+/*====== ACCESSIBILITY ======*/
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -2415,7 +2645,7 @@ footer {
     }
 }
 
-/*====== MOBILE HOVER EFFECTS ====== */
+/*====== MOBILE HOVER EFFECTS ======*/
 @media (hover: none) and (pointer: coarse) {
     .team-card:active,
     .project-card:active,
@@ -2430,7 +2660,7 @@ footer {
     }
 }
 
-/*====== PRINT STYLES====== */
+/*====== PRINT STYLES ======*/
 @media print {
     .navbar,
     .menu-toggle,
@@ -2452,204 +2682,37 @@ footer {
         transition: none !important;
     }
 }
-/* ====== ENROLLMENT MODAL ENHANCEMENTS ====== */
 
+/*====== ENROLLMENT MODAL SPECIFIC ENHANCEMENTS ======*/
 .enrollment-modal {
-    display: none;
-    position: fixed;
     z-index: 2500;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(44,62,80,0.85) 100%);
-    animation: modalBackdropFade 0.4s ease-out;
-    overflow-y: auto;
-    backdrop-filter: blur(15px) saturate(150%);
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1rem;
-}
-
-@keyframes modalBackdropFade {
-    0% {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-    }
-    100% {
-        opacity: 1;
-        backdrop-filter: blur(15px) saturate(150%);
-    }
-}
-
-.enrollment-modal.active {
-    display: flex;
 }
 
 .enrollment-form-container {
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-    margin: auto;
-    padding: 3rem 2.5rem;
-    border-radius: 32px;
-    width: 95%;
     max-width: 600px;
-    box-shadow: 
-        0 25px 70px rgba(255, 140, 66, 0.4),
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        inset 0 -2px 20px rgba(255, 140, 66, 0.1);
-    animation: enrollmentSlideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
-    border: 3px solid transparent;
-    background-clip: padding-box;
 }
 
-.enrollment-form-container::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 32px;
-    padding: 3px;
-    background: linear-gradient(135deg, 
-        var(--primary-orange) 0%, 
-        var(--gold) 25%, 
-        var(--secondary-orange) 50%, 
-        var(--primary-orange) 75%,
-        var(--gold) 100%);
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: borderGradientFlow 4s linear infinite;
-    z-index: -1;
+.enrollment-form-container .modal-close {
+    animation: closeButtonRotate 10s linear infinite;
 }
 
-@keyframes borderGradientFlow {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+@keyframes closeButtonRotate {
+    0%, 90%, 100% { transform: rotate(0deg); }
+    95% { transform: rotate(90deg); }
 }
 
-@keyframes enrollmentSlideUp {
-    0% {
-        transform: translateY(100px) scale(0.85);
-        opacity: 0;
-        filter: blur(10px);
-    }
-    60% {
-        transform: translateY(-10px) scale(1.02);
-        opacity: 0.8;
-        filter: blur(0px);
-    }
-    100% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-        filter: blur(0px);
-    }
-}
-
-
-.enrollment-form-container .modal-close::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    background: conic-gradient(
-        from 0deg,
-        var(--primary-orange),
-        var(--gold),
-        var(--secondary-orange),
-        var(--primary-orange)
-    );
-    opacity: 0;
-    transition: all 0.3s ease;
-    animation: closeButtonSpin 3s linear infinite;
-    z-index: -1;
-}
-
-@keyframes closeButtonSpin {
-    0% { transform: rotate(0deg); opacity: 0; }
-    50% { opacity: 0.6; }
-    100% { transform: rotate(360deg); opacity: 0; }
-}
-
-.enrollment-form-container .modal-close:hover {
-    transform: rotate(90deg) scale(1.15);
-    box-shadow: 
-        0 12px 32px rgba(255, 69, 0, 0.7),
-        0 6px 16px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(135deg, #FF6347 0%, #FF4500 100%);
-}
-
-.enrollment-form-container .modal-close:hover::before {
-    opacity: 0.8;
-    transform: rotate(180deg) scale(1.3);
-}
-
-.enrollment-form-container .modal-close:active {
-    transform: rotate(90deg) scale(1.05);
-}
-
-/* Enhanced Modal Headers */
-.enrollment-form-container h2 {
+#selectedCourse {
     text-align: center;
-    font-size: clamp(1.8rem, 5vw, 2.3rem);
-    margin-bottom: 0.5rem;
-    margin-top: 0;
-    background: linear-gradient(135deg, 
-        var(--dark-blue) 0%, 
-        var(--primary-orange) 30%, 
-        var(--gold) 60%, 
-        var(--secondary-orange) 80%, 
-        var(--dark-blue) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleGradient 3s linear infinite;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    position: relative;
-    padding-bottom: 1rem;
+    font-size: clamp(1.15rem, 2.5vw, 1.3rem);
+    color: var(--primary-orange);
+    font-weight: 700;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 140, 66, 0.1), rgba(255, 215, 0, 0.1));
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+    border: 2px solid rgba(255, 140, 66, 0.3);
+    display: block;
 }
-
-@keyframes titleGradient {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
-}
-
-.enrollment-form-container h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--primary-orange), 
-        var(--gold),
-        var(--primary-orange), 
-        transparent);
-    border-radius: 2px;
-    animation: underlineGlow 2s ease-in-out infinite;
-}
-
-@keyframes underlineGlow {
-    0%, 100% {
-        box-shadow: 0 0 5px var(--primary-orange);
-        width: 80px;
-    }
-    50% {
-        box-shadow: 0 0 20px var(--gold);
-        width: 120px;
-    }
-}
-
-
-
 
 #selectedCourse::before {
     content: '🎓';
@@ -2661,160 +2724,6 @@ footer {
 @keyframes iconBounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
-}
-
-/* Enhanced Form Fields */
-.enrollment-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.enrollment-form label {
-    display: block;
-    margin-bottom: 0.6rem;
-    color: var(--text-dark);
-    font-weight: 700;
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    letter-spacing: 0.3px;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.enrollment-form label::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--primary-orange);
-    font-size: 1.2em;
-    animation: labelArrow 2s ease-in-out infinite;
-}
-
-@keyframes labelArrow {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(3px); }
-}
-
-.enrollment-form label span {
-    color: #FF0000;
-    font-weight: bold;
-    margin-left: 0.2rem;
-}
-
-.enrollment-form input,
-.enrollment-form select {
-    width: 100%;
-    padding: clamp(0.9rem, 2vw, 1.1rem);
-    border: 3px solid var(--border-color);
-    border-radius: 16px;
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: linear-gradient(145deg, #ffffff, #f8f9fa);
-    font-family: inherit;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),
-        0 2px 8px rgba(0, 0, 0, 0.05);
-    position: relative;
-}
-
-.enrollment-form input:hover,
-.enrollment-form select:hover {
-    border-color: rgba(255, 140, 66, 0.4);
-    background: white;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),
-        0 4px 12px rgba(255, 140, 66, 0.2);
-}
-
-.enrollment-form input:focus,
-.enrollment-form select:focus {
-    outline: none;
-    border-color: var(--primary-orange);
-    background: white;
-    transform: translateY(-2px);
-    box-shadow: 
-        0 0 0 5px rgba(255, 140, 66, 0.15),
-        0 8px 20px rgba(255, 140, 66, 0.3),
-        inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    animation: inputFocusPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes inputFocusPulse {
-    0%, 100% {
-        box-shadow: 
-            0 0 0 5px rgba(255, 140, 66, 0.15),
-            0 8px 20px rgba(255, 140, 66, 0.3),
-            inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-    50% {
-        box-shadow: 
-            0 0 0 8px rgba(255, 140, 66, 0.25),
-            0 12px 30px rgba(255, 140, 66, 0.4),
-            inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-}
-
-/* Enhanced Phone Input */
-.enrollment-form .phone-input {
-    display: flex;
-    gap: 0.8rem;
-    align-items: stretch;
-}
-
-.enrollment-form .phone-input select {
-    flex: 0 0 auto;
-    min-width: clamp(110px, 25%, 140px);
-    max-width: 140px;
-    cursor: pointer;
-    font-weight: 600;
-    background: linear-gradient(145deg, #ffffff, #f0f4f8);
-}
-
-.enrollment-form .phone-input input {
-    flex: 1;
-    min-width: 0;
-}
-
-/* Helper Text Styling */
-.enrollment-form small {
-    color: #666;
-    font-size: 0.85rem;
-    margin-top: -0.8rem;
-    display: block;
-    padding-left: 1rem;
-    font-style: italic;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-.enrollment-form input:focus + small,
-.enrollment-form select:focus + small {
-    color: var(--primary-orange);
-    opacity: 1;
-    transform: translateX(5px);
-}
-
-/* Enhanced Submit Button */
-.enrollment-form button[type="button"] {
-    width: 100%;
-    padding: clamp(1rem, 2.5vw, 1.3rem);
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%);
-    background-size: 200% auto;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 
-        0 8px 24px rgba(37, 211, 102, 0.4),
-        0 4px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 1rem;
 }
 
 .enrollment-form button[type="button"]::before {
@@ -2831,298 +2740,16 @@ footer {
     75% { transform: translateY(5px) rotate(10deg); }
 }
 
-.enrollment-form button[type="button"]::after {
+.contact-form button[type="button"]::before,
+.career-form button[type="button"]::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+    left: 2rem;
+    font-size: 1.5em;
+    animation: whatsappIconFloat 2s ease-in-out infinite;
 }
 
-.enrollment-form button[type="button"]:hover {
-    transform: translateY(-5px) scale(1.02);
-    background-position: right center;
-    box-shadow: 
-        0 12px 35px rgba(37, 211, 102, 0.6),
-        0 6px 18px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(37, 211, 102, 0.3);
-    animation: buttonPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes buttonPulse {
-    0%, 100% {
-        box-shadow: 
-            0 12px 35px rgba(37, 211, 102, 0.6),
-            0 6px 18px rgba(0, 0, 0, 0.3),
-            0 0 40px rgba(37, 211, 102, 0.3);
-    }
-    50% {
-        box-shadow: 
-            0 15px 45px rgba(37, 211, 102, 0.8),
-            0 8px 25px rgba(0, 0, 0, 0.4),
-            0 0 60px rgba(37, 211, 102, 0.5);
-    }
-}
-
-.enrollment-form button[type="button"]:hover::after {
-    width: 400px;
-    height: 400px;
-}
-
-.enrollment-form button[type="button"]:active {
-    transform: translateY(-2px) scale(0.98);
-    box-shadow: 
-        0 6px 20px rgba(37, 211, 102, 0.5),
-        0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Scrollbar Styling for Modal */
-.enrollment-form-container::-webkit-scrollbar {
-    width: 10px;
-}
-
-.enrollment-form-container::-webkit-scrollbar-track {
-    background: linear-gradient(180deg, #f0f4f8, #e1e8ed);
-    border-radius: 10px;
-}
-
-.enrollment-form-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--primary-orange), var(--gold));
-    border-radius: 10px;
-    border: 2px solid #f0f4f8;
-    box-shadow: 0 2px 6px rgba(255, 140, 66, 0.3);
-}
-
-.enrollment-form-container::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--secondary-orange), var(--primary-orange));
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .enrollment-form-container {
-        padding: 2rem 1.5rem;
-        width: 98%;
-        max-height: 95vh;
-        border-radius: 24px;
-    }
-
-    .enrollment-form-container .modal-close {
-        top: -12px;
-        right: -12px;
-        width: 50px;
-        height: 50px;
-        font-size: 2.2rem;
-    }
-
-    .enrollment-form {
-        gap: 1.2rem;
-    }
-
-    .enrollment-form label {
-        padding-left: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .enrollment-form input,
-    .enrollment-form select {
-        padding: 0.85rem;
-        border-radius: 12px;
-    }
-
-    .enrollment-form .phone-input {
-        gap: 0.5rem;
-    }
-
-    .enrollment-form .phone-input select {
-        min-width: 100px;
-        font-size: 0.85rem;
-    }
-
-    .enrollment-form button[type="button"] {
-        padding: 1rem;
-    }
-
-    .enrollment-form button[type="button"]::before {
-        left: 1.5rem;
-        font-size: 1.3em;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .enrollment-form-container {
-        padding: 1.5rem 1rem;
-        border-radius: 20px;
-    }
-
-    .enrollment-form-container .modal-close {
-        width: 45px;
-        height: 45px;
-        font-size: 2rem;
-        top: -10px;
-        right: -10px;
-    }
-
-    .enrollment-form {
-        gap: 1rem;
-    }
-
-    .enrollment-form .phone-input {
-        gap: 0.4rem;
-    }
-
-    .enrollment-form .phone-input select {
-        min-width: 90px;
-        font-size: 0.8rem;
-        padding: 0.7rem 0.3rem;
-    }
-
-    #selectedCourse {
-        font-size: 1.1rem;
-        padding: 0.6rem 1rem;
-    }
-}
-
-/* Loading/Disabled State */
-.enrollment-form button[type="button"]:disabled {
-    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-    cursor: not-allowed;
-    transform: none;
-    opacity: 0.7;
-    animation: none;
-}
-
-.enrollment-form button[type="button"]:disabled:hover {
-    transform: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Success/Error States */
-.enrollment-form input.success {
-    border-color: #27ae60;
-    background: rgba(39, 174, 96, 0.05);
-}
-
-.enrollment-form input.error {
-    border-color: #e74c3c;
-    background: rgba(231, 76, 60, 0.05);
-    animation: shakeError 0.5s;
-}
-
-@keyframes shakeError {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-}
-
-/* Accessibility - Focus Visible */
-.enrollment-form input:focus-visible,
-.enrollment-form select:focus-visible,
-.enrollment-form button:focus-visible {
-    outline: 3px solid var(--primary-orange);
-    outline-offset: 3px;
-}
-
-/* Reduce Motion for Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    .enrollment-form-container,
-    .enrollment-form-container::before,
-    .enrollment-form button[type="button"],
-    .enrollment-form button[type="button"]::before,
-    .enrollment-form input,
-    .enrollment-form select,
-    #selectedCourse,
-    .enrollment-form label::before {
-        animation: none !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-/* ====== ENHANCED CONTACT FORM STYLING ====== */
-
-.contact-section {
-    max-width: 800px;
-    margin: clamp(1.5rem, 3vw, 2rem) auto;
-    padding: clamp(2.5rem, 5vw, 3.5rem);
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 32px;
-    box-shadow: 
-        0 25px 70px rgba(255, 140, 66, 0.4),
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        inset 0 -2px 20px rgba(255, 140, 66, 0.1);
-    position: relative;
-    border: 3px solid transparent;
-    background-clip: padding-box;
-}
-
-.contact-section::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 32px;
-    padding: 3px;
-    background: linear-gradient(135deg, 
-        var(--primary-orange) 0%, 
-        var(--gold) 25%, 
-        var(--secondary-orange) 50%, 
-        var(--primary-orange) 75%,
-        var(--gold) 100%);
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: borderGradientFlow 4s linear infinite;
-    z-index: -1;
-}
-
-/* Contact Header Styling */
-.contact-header {
-    margin-bottom: 1rem;
-}
-
-.contact-header h2 {
-    text-align: center;
-    font-size: clamp(2rem, 6vw, 2.8rem);
-    margin: 0;
-    background: linear-gradient(135deg, 
-        var(--dark-blue) 0%, 
-        var(--primary-orange) 30%, 
-        var(--gold) 60%, 
-        var(--secondary-orange) 80%, 
-        var(--dark-blue) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleGradient 3s linear infinite;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-.contact-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--primary-orange), 
-        var(--gold),
-        var(--primary-orange), 
-        transparent);
-    border-radius: 2px;
-    animation: underlineGlow 2s ease-in-out infinite;
-}
-
+/*====== CONTACT SECTION SPECIFIC ENHANCEMENTS ======*/
 .contact-section h3 {
     text-align: center;
     color: var(--text-light);
@@ -3147,1524 +2774,13 @@ footer {
     }
 }
 
-/* Contact Form Enhanced Styling */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.contact-form label {
-    display: block;
-    margin-bottom: 0.6rem;
-    color: var(--text-dark);
-    font-weight: 700;
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    letter-spacing: 0.3px;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.contact-form label::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--primary-orange);
-    font-size: 1.2em;
-    animation: labelArrow 2s ease-in-out infinite;
-}
-
-.contact-form label span {
-    color: #FF0000;
-    font-weight: bold;
-    margin-left: 0.2rem;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-    width: 100%;
-    padding: clamp(0.9rem, 2vw, 1.1rem);
-    border: 3px solid var(--border-color);
-    border-radius: 16px;
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: linear-gradient(145deg, #ffffff, #f8f9fa);
-    font-family: inherit;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),
-        0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.contact-form textarea {
-    resize: vertical;
-    min-height: 150px;
-}
-
-.contact-form input:hover,
-.contact-form select:hover,
-.contact-form textarea:hover {
-    border-color: rgba(255, 140, 66, 0.4);
-    background: white;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),
-        0 4px 12px rgba(255, 140, 66, 0.2);
-}
-
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--primary-orange);
-    background: white;
-    transform: translateY(-2px);
-    box-shadow: 
-        0 0 0 5px rgba(255, 140, 66, 0.15),
-        0 8px 20px rgba(255, 140, 66, 0.3),
-        inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    animation: inputFocusPulse 1.5s ease-in-out infinite;
-}
-
-/* Phone Input Styling */
-.contact-form .phone-input {
-    display: flex;
-    gap: 0.8rem;
-    align-items: stretch;
-}
-
-.contact-form .phone-input select {
-    flex: 0 0 auto;
-    min-width: clamp(110px, 25%, 140px);
-    max-width: 140px;
-    cursor: pointer;
-    font-weight: 600;
-    background: linear-gradient(145deg, #ffffff, #f0f4f8);
-}
-
-.contact-form .phone-input input {
-    flex: 1;
-    min-width: 0;
-}
-
-/* Helper Text Styling */
-.contact-form small {
-    color: #666;
-    font-size: 0.85rem;
-    margin-top: -0.8rem;
-    display: block;
-    padding-left: 1rem;
-    font-style: italic;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-.contact-form input:focus + small,
-.contact-form select:focus + small,
-.contact-form textarea:focus + small {
-    color: var(--primary-orange);
-    opacity: 1;
-    transform: translateX(5px);
-}
-
-/* Enhanced Submit Button */
-.contact-form button[type="button"] {
-    width: 100%;
-    padding: clamp(1rem, 2.5vw, 1.3rem);
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%);
-    background-size: 200% auto;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 
-        0 8px 24px rgba(37, 211, 102, 0.4),
-        0 4px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 1rem;
-}
-
-.contact-form button[type="button"]::before {
-    content: '';
-    position: absolute;
-    left: 2rem;
-    font-size: 1.5em;
-    animation: whatsappIconFloat 2s ease-in-out infinite;
-}
-
-@keyframes whatsappIconFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-5px) rotate(-10deg); }
-    75% { transform: translateY(5px) rotate(10deg); }
-}
-
-.contact-form button[type="button"]::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.contact-form button[type="button"]:hover {
-    transform: translateY(-5px) scale(1.02);
-    background-position: right center;
-    box-shadow: 
-        0 12px 35px rgba(37, 211, 102, 0.6),
-        0 6px 18px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(37, 211, 102, 0.3);
-    animation: contactButtonPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes contactButtonPulse {
-    0%, 100% {
-        box-shadow: 
-            0 12px 35px rgba(37, 211, 102, 0.6),
-            0 6px 18px rgba(0, 0, 0, 0.3),
-            0 0 40px rgba(37, 211, 102, 0.3);
-    }
-    50% {
-        box-shadow: 
-            0 15px 45px rgba(37, 211, 102, 0.8),
-            0 8px 25px rgba(0, 0, 0, 0.4),
-            0 0 60px rgba(37, 211, 102, 0.5);
-    }
-}
-
-.contact-form button[type="button"]:hover::after {
-    width: 400px;
-    height: 400px;
-}
-
-.contact-form button[type="button"]:active {
-    transform: translateY(-2px) scale(0.98);
-    box-shadow: 
-        0 6px 20px rgba(37, 211, 102, 0.5),
-        0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Success/Error States */
-.contact-form input.success,
-.contact-form textarea.success {
-    border-color: #27ae60;
-    background: rgba(39, 174, 96, 0.05);
-}
-
-.contact-form input.error,
-.contact-form textarea.error {
-    border-color: #e74c3c;
-    background: rgba(231, 76, 60, 0.05);
-    animation: shakeError 0.5s;
-}
-
-@keyframes shakeError {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-}
-
-/* Loading/Disabled State */
-.contact-form button[type="button"]:disabled {
-    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-    cursor: not-allowed;
-    transform: none;
-    opacity: 0.7;
-    animation: none;
-}
-
-.contact-form button[type="button"]:disabled:hover {
-    transform: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .contact-section {
-        padding: 2rem 1.5rem;
-        margin: 15px auto;
-        border-radius: 24px;
-    }
-
-    .contact-section h3 {
-        margin-bottom: 2rem;
-        padding: 0.6rem 1rem;
-    }
-
-    .contact-form {
-        gap: 1.2rem;
-    }
-
-    .contact-form label {
-        padding-left: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-        padding: 0.85rem;
-        border-radius: 12px;
-    }
-
-    .contact-form .phone-input {
-        gap: 0.5rem;
-    }
-
-    .contact-form .phone-input select {
-        min-width: 100px;
-        font-size: 0.85rem;
-    }
-
-    .contact-form button[type="button"] {
-        padding: 1rem;
-    }
-
-    .contact-form button[type="button"]::before {
-        left: 1.5rem;
-        font-size: 1.3em;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .contact-section {
-        padding: 1.5rem 1rem;
-        border-radius: 20px;
-    }
-
-    .contact-header h2 {
-        font-size: 1.8rem;
-    }
-
-    .contact-section h3 {
-        font-size: 0.95rem;
-        padding: 0.5rem 0.8rem;
-    }
-
-    .contact-form {
-        gap: 1rem;
-    }
-
-    .contact-form .phone-input {
-        gap: 0.4rem;
-    }
-
-    .contact-form .phone-input select {
-        min-width: 90px;
-        font-size: 0.8rem;
-        padding: 0.7rem 0.3rem;
-    }
-
-    .contact-form textarea {
-        min-height: 120px;
-    }
-}
-
-/* Accessibility - Focus Visible */
-.contact-form input:focus-visible,
-.contact-form select:focus-visible,
-.contact-form textarea:focus-visible,
-.contact-form button:focus-visible {
-    outline: 3px solid var(--primary-orange);
-    outline-offset: 3px;
-}
-
-/* Reduce Motion for Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    .contact-section,
-    .contact-section::before,
-    .contact-header h2,
-    .contact-header h2::after,
-    .contact-section h3,
-    .contact-form button[type="button"],
-    .contact-form button[type="button"]::before,
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea,
-    .contact-form label::before {
-        animation: none !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-/* ====== CAREER FORM ENHANCED STYLING (Same as Contact Form) ====== */
-
-/* Career Section Styling */
-.career-section {
-    max-width: 800px;
-    margin: clamp(1.5rem, 3vw, 2rem) auto;
-    padding: clamp(2.5rem, 5vw, 3.5rem);
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 32px;
-    box-shadow: 
-        0 25px 70px rgba(255, 140, 66, 0.4),
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        inset 0 -2px 20px rgba(255, 140, 66, 0.1);
-    position: relative;
-    border: 3px solid transparent;
-    background-clip: padding-box;
-}
-
-.career-section::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 32px;
-    padding: 3px;
-    background: linear-gradient(135deg, 
-        var(--primary-orange) 0%, 
-        var(--gold) 25%, 
-        var(--secondary-orange) 50%, 
-        var(--primary-orange) 75%,
-        var(--gold) 100%);
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: borderGradientFlow 4s linear infinite;
-    z-index: -1;
-}
-
-/* Career Header Styling */
+/*====== CAREER SECTION SPECIFIC STYLES ======*/
 .career-section .contact-header {
     margin-bottom: 1rem;
     margin-top: 0;
 }
 
-.career-section .contact-header h2 {
-    text-align: center;
-    font-size: clamp(2rem, 6vw, 2.8rem);
-    margin: 0;
-    background: linear-gradient(135deg, 
-        var(--dark-blue) 0%, 
-        var(--primary-orange) 30%, 
-        var(--gold) 60%, 
-        var(--secondary-orange) 80%, 
-        var(--dark-blue) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleGradient 3s linear infinite;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-.career-section .contact-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--primary-orange), 
-        var(--gold),
-        var(--primary-orange), 
-        transparent);
-    border-radius: 2px;
-    animation: underlineGlow 2s ease-in-out infinite;
-}
-
-.career-section h3 {
-    text-align: left;
-    color: var(--text-dark);
-    margin: 1.5rem 0 1rem 0;
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    border-left: 5px solid var(--gold);
-    padding-left: 1rem;
-    background: linear-gradient(to right, #fffef7, transparent);
-}
-
-.career-section p {
-    margin-top: 0.7rem;
-    line-height: 1.8;
-    color: var(--text-light);
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-}
-
-/* Career Form Enhanced Styling */
-.career-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.career-form label {
-    display: block;
-    margin-bottom: 0.6rem;
-    color: var(--text-dark);
-    font-weight: 700;
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    letter-spacing: 0.3px;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.career-form label::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--primary-orange);
-    font-size: 1.2em;
-    animation: labelArrow 2s ease-in-out infinite;
-}
-
-.career-form label span {
-    color: #FF0000;
-    font-weight: bold;
-    margin-left: 0.2rem;
-}
-
-.career-form input,
-.career-form select,
-.career-form textarea {
-    width: 100%;
-    padding: clamp(0.9rem, 2vw, 1.1rem);
-    border: 3px solid var(--border-color);
-    border-radius: 16px;
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: linear-gradient(145deg, #ffffff, #f8f9fa);
-    font-family: inherit;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),
-        0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.career-form textarea {
-    resize: vertical;
-    min-height: 150px;
-}
-
-.career-form input:hover,
-.career-form select:hover,
-.career-form textarea:hover {
-    border-color: rgba(255, 140, 66, 0.4);
-    background: white;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),
-        0 4px 12px rgba(255, 140, 66, 0.2);
-}
-
-.career-form input:focus,
-.career-form select:focus,
-.career-form textarea:focus {
-    outline: none;
-    border-color: var(--primary-orange);
-    background: white;
-    transform: translateY(-2px);
-    box-shadow: 
-        0 0 0 5px rgba(255, 140, 66, 0.15),
-        0 8px 20px rgba(255, 140, 66, 0.3),
-        inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    animation: inputFocusPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes inputFocusPulse {
-    0%, 100% {
-        box-shadow: 
-            0 0 0 5px rgba(255, 140, 66, 0.15),
-            0 8px 20px rgba(255, 140, 66, 0.3),
-            inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-    50% {
-        box-shadow: 
-            0 0 0 8px rgba(255, 140, 66, 0.25),
-            0 12px 30px rgba(255, 140, 66, 0.4),
-            inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-}
-
-/* Phone Input Styling */
-.career-form .phone-input {
-    display: flex;
-    gap: 0.8rem;
-    align-items: stretch;
-}
-
-.career-form .phone-input select {
-    flex: 0 0 auto;
-    min-width: clamp(110px, 25%, 140px);
-    max-width: 140px;
-    cursor: pointer;
-    font-weight: 600;
-    background: linear-gradient(145deg, #ffffff, #f0f4f8);
-}
-
-.career-form .phone-input input {
-    flex: 1;
-    min-width: 0;
-}
-
-/* Helper Text Styling */
-.career-form small {
-    color: #666;
-    font-size: 0.85rem;
-    margin-top: -0.8rem;
-    display: block;
-    padding-left: 1rem;
-    font-style: italic;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-}
-
-.career-form input:focus + small,
-.career-form select:focus + small,
-.career-form textarea:focus + small {
-    color: var(--primary-orange);
-    opacity: 1;
-    transform: translateX(5px);
-}
-
-/* Enhanced Submit Button */
-.career-form button[type="button"] {
-    width: 100%;
-    padding: clamp(1rem, 2.5vw, 1.3rem);
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%);
-    background-size: 200% auto;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 
-        0 8px 24px rgba(37, 211, 102, 0.4),
-        0 4px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 1rem;
-}
-
-.career-form button[type="button"]::before {
-    content: '';
-    position: absolute;
-    left: 2rem;
-    font-size: 1.5em;
-    animation: whatsappIconFloat 2s ease-in-out infinite;
-}
-
-@keyframes whatsappIconFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    25% { transform: translateY(-5px) rotate(-10deg); }
-    75% { transform: translateY(5px) rotate(10deg); }
-}
-
-.career-form button[type="button"]::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.career-form button[type="button"]:hover {
-    transform: translateY(-5px) scale(1.02);
-    background-position: right center;
-    box-shadow: 
-        0 12px 35px rgba(37, 211, 102, 0.6),
-        0 6px 18px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(37, 211, 102, 0.3);
-    animation: careerButtonPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes careerButtonPulse {
-    0%, 100% {
-        box-shadow: 
-            0 12px 35px rgba(37, 211, 102, 0.6),
-            0 6px 18px rgba(0, 0, 0, 0.3),
-            0 0 40px rgba(37, 211, 102, 0.3);
-    }
-    50% {
-        box-shadow: 
-            0 15px 45px rgba(37, 211, 102, 0.8),
-            0 8px 25px rgba(0, 0, 0, 0.4),
-            0 0 60px rgba(37, 211, 102, 0.5);
-    }
-}
-
-.career-form button[type="button"]:hover::after {
-    width: 400px;
-    height: 400px;
-}
-
-.career-form button[type="button"]:active {
-    transform: translateY(-2px) scale(0.98);
-    box-shadow: 
-        0 6px 20px rgba(37, 211, 102, 0.5),
-        0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Success/Error States */
-.career-form input.success,
-.career-form textarea.success {
-    border-color: #27ae60;
-    background: rgba(39, 174, 96, 0.05);
-}
-
-.career-form input.error,
-.career-form textarea.error {
-    border-color: #e74c3c;
-    background: rgba(231, 76, 60, 0.05);
-    animation: shakeError 0.5s;
-}
-
-@keyframes shakeError {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
-}
-
-/* Loading/Disabled State */
-.career-form button[type="button"]:disabled {
-    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-    cursor: not-allowed;
-    transform: none;
-    opacity: 0.7;
-    animation: none;
-}
-
-.career-form button[type="button"]:disabled:hover {
-    transform: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .career-section {
-        padding: 2rem 1.5rem;
-        margin: 15px auto;
-        border-radius: 24px;
-    }
-
-    .career-section h3 {
-        margin: 1.2rem 0 0.8rem 0;
-        padding-left: 0.8rem;
-    }
-
-    .career-form {
-        gap: 1.2rem;
-    }
-
-    .career-form label {
-        padding-left: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .career-form input,
-    .career-form select,
-    .career-form textarea {
-        padding: 0.85rem;
-        border-radius: 12px;
-    }
-
-    .career-form .phone-input {
-        gap: 0.5rem;
-    }
-
-    .career-form .phone-input select {
-        min-width: 100px;
-        font-size: 0.85rem;
-    }
-
-    .career-form button[type="button"] {
-        padding: 1rem;
-    }
-
-    .career-form button[type="button"]::before {
-        left: 1.5rem;
-        font-size: 1.3em;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .career-section {
-        padding: 1.5rem 1rem;
-        border-radius: 20px;
-    }
-
-    .career-section .contact-header h2 {
-        font-size: 1.8rem;
-    }
-
-    .career-section h3 {
-        font-size: 1rem;
-        padding-left: 0.6rem;
-        margin: 1rem 0 0.6rem 0;
-    }
-
-    .career-form {
-        gap: 1rem;
-    }
-
-    .career-form .phone-input {
-        gap: 0.4rem;
-    }
-
-    .career-form .phone-input select {
-        min-width: 90px;
-        font-size: 0.8rem;
-        padding: 0.7rem 0.3rem;
-    }
-
-    .career-form textarea {
-        min-height: 120px;
-    }
-}
-
-/* Accessibility - Focus Visible */
-.career-form input:focus-visible,
-.career-form select:focus-visible,
-.career-form textarea:focus-visible,
-.career-form button:focus-visible {
-    outline: 3px solid var(--primary-orange);
-    outline-offset: 3px;
-}
-
-/* Reduce Motion for Accessibility */
-@media (prefers-reduced-motion: reduce) {
-    .career-section,
-    .career-section::before,
-    .career-section .contact-header h2,
-    .career-section .contact-header h2::after,
-    .career-form button[type="button"],
-    .career-form button[type="button"]::before,
-    .career-form input,
-    .career-form select,
-    .career-form textarea,
-    .career-form label::before {
-        animation: none !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Override any conflicting A4 container styles */
-.a4-container .career-section {
-    max-width: 800px;
-    margin: clamp(1.5rem, 3vw, 2rem) auto;
-    padding: clamp(2.5rem, 5vw, 3.5rem);
-}
-
-/* Remove old career section styles if they exist */
-.a4-container {
-    background: transparent;
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
-}
-
-
-
-
-/* ====== ENHANCED LOGIN & SIGNUP MODALS (Same as Career/Contact Form) ====== */
-
-/* Modal Backdrop Enhancement */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(44,62,80,0.85) 100%);
-    animation: modalBackdropFade 0.4s ease-out;
-    overflow-y: auto;
-    backdrop-filter: blur(15px) saturate(150%);
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 1rem;
-}
-
-@keyframes modalBackdropFade {
-    0% {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-    }
-    100% {
-        opacity: 1;
-        backdrop-filter: blur(15px) saturate(150%);
-    }
-}
-
-.modal[style*="display: flex"] {
-    display: flex !important;
-}
-
-/* Enhanced Modal Content */
-.modal-content {
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-    margin: auto;
-    padding: 3rem 2.5rem;
-    border-radius: 32px;
-    width: 95%;
-    max-width: 600px;
-    box-shadow: 
-        0 25px 70px rgba(255, 140, 66, 0.4),
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        inset 0 -2px 20px rgba(255, 140, 66, 0.1);
-    animation: modalSlideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    max-height: 90vh;
-    overflow-y: auto;
-    border: 3px solid transparent;
-    background-clip: padding-box;
-}
-
-.modal-content::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 32px;
-    padding: 3px;
-    background: linear-gradient(135deg, 
-        var(--primary-orange) 0%, 
-        var(--gold) 25%, 
-        var(--secondary-orange) 50%, 
-        var(--primary-orange) 75%,
-        var(--gold) 100%);
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: borderGradientFlow 4s linear infinite;
-    z-index: -1;
-}
-
-@keyframes modalSlideUp {
-    0% {
-        transform: translateY(100px) scale(0.85);
-        opacity: 0;
-        filter: blur(10px);
-    }
-    60% {
-        transform: translateY(-10px) scale(1.02);
-        opacity: 0.8;
-        filter: blur(0px);
-    }
-    100% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-        filter: blur(0px);
-    }
-}
-
-/* Enhanced Close Button */
-.modal .close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 2.5rem;
-    color: #fff;
-    background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(255, 140, 66, 0.4);
-    border: 3px solid white;
-    font-weight: bold;
-    line-height: 1;
-}
-
-.modal .close::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    background: conic-gradient(
-        from 0deg,
-        var(--primary-orange),
-        var(--gold),
-        var(--secondary-orange),
-        var(--primary-orange)
-    );
-    opacity: 0;
-    transition: all 0.3s ease;
-    animation: closeButtonSpin 3s linear infinite;
-    z-index: -1;
-}
-
-@keyframes closeButtonSpin {
-    0% { transform: rotate(0deg); opacity: 0; }
-    50% { opacity: 0.6; }
-    100% { transform: rotate(360deg); opacity: 0; }
-}
-
-.modal .close:hover {
-    transform: rotate(90deg) scale(1.15);
-    box-shadow: 
-        0 12px 32px rgba(255, 69, 0, 0.7),
-        0 6px 16px rgba(0, 0, 0, 0.4);
-    background: linear-gradient(135deg, #FF6347 0%, #FF4500 100%);
-}
-
-.modal .close:hover::before {
-    opacity: 0.8;
-    transform: rotate(180deg) scale(1.3);
-}
-
-/* Enhanced Modal Logo */
-.modal-logo {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid var(--border-color);
-    margin-top: 0.5rem;
-}
-
-.modal-logo img {
-    width: clamp(80px, 15vw, 100px);
-    height: clamp(70px, 12vw, 90px);
-    object-fit: contain;
-    margin: 0 auto 1rem;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-    display: block;
-    animation: logoFloat 3s ease-in-out infinite;
-}
-
-@keyframes logoFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.modal-logo h1 {
-    font-size: clamp(1.3rem, 3.5vw, 1.6rem);
-    color: var(--text-dark);
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    letter-spacing: 1px;
-}
-
-.modal-logo p {
-    font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-    color: var(--text-light);
-    font-weight: 500;
-}
-
-/* Enhanced Modal Headers */
-.modal-content h2 {
-    text-align: center;
-    font-size: clamp(1.8rem, 5vw, 2.3rem);
-    margin-bottom: 2rem;
-    margin-top: 0;
-    background: linear-gradient(135deg, 
-        var(--dark-blue) 0%, 
-        var(--primary-orange) 30%, 
-        var(--gold) 60%, 
-        var(--secondary-orange) 80%, 
-        var(--dark-blue) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleGradient 3s linear infinite;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-.modal-content h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--primary-orange), 
-        var(--gold),
-        var(--primary-orange), 
-        transparent);
-    border-radius: 2px;
-    animation: underlineGlow 2s ease-in-out infinite;
-}
-
-/* Enhanced Form Groups */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.6rem;
-    color: var(--text-dark);
-    font-weight: 700;
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    letter-spacing: 0.3px;
-    position: relative;
-    padding-left: 1.5rem;
-}
-
-.form-group label::before {
-    content: '▸';
-    position: absolute;
-    left: 0;
-    color: var(--primary-orange);
-    font-size: 1.2em;
-    animation: labelArrow 2s ease-in-out infinite;
-}
-
-@keyframes labelArrow {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(3px); }
-}
-
-.form-group label .required {
-    color: #FF0000;
-    font-weight: bold;
-    margin-left: 0.2rem;
-}
-
-/* Enhanced Input Fields */
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: clamp(0.9rem, 2vw, 1.1rem);
-    border: 3px solid var(--border-color);
-    border-radius: 16px;
-    font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: linear-gradient(145deg, #ffffff, #f8f9fa);
-    font-family: inherit;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),
-        0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.form-group input:hover,
-.form-group select:hover {
-    border-color: rgba(255, 140, 66, 0.4);
-    background: white;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.05),
-        0 4px 12px rgba(255, 140, 66, 0.2);
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: var(--primary-orange);
-    background: white;
-    transform: translateY(-2px);
-    box-shadow: 
-        0 0 0 5px rgba(255, 140, 66, 0.15),
-        0 8px 20px rgba(255, 140, 66, 0.3),
-        inset 0 2px 4px rgba(0, 0, 0, 0.05);
-    animation: inputFocusPulse 1.5s ease-in-out infinite;
-}
-
-/* Phone Input Styling */
-.phone-input {
-    display: flex;
-    gap: 0.8rem;
-    align-items: stretch;
-}
-
-.phone-input select {
-    flex: 0 0 auto;
-    min-width: clamp(110px, 25%, 140px);
-    max-width: 140px;
-    cursor: pointer;
-    font-weight: 600;
-    background: linear-gradient(145deg, #ffffff, #f0f4f8);
-}
-
-.phone-input input {
-    flex: 1;
-    min-width: 0;
-}
-
-/* Form Row */
-.form-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Form Options */
-.form-options {
-    text-align: right;
-    margin-bottom: 1.5rem;
-}
-
-.forgot-password {
-    color: var(--primary-orange);
-    text-decoration: none;
-    font-size: clamp(0.85rem, 1.5vw, 0.9rem);
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.forgot-password:hover {
-    color: var(--secondary-orange);
-    text-decoration: underline;
-}
-
-/* Enhanced Submit Button */
-.btn-submit {
-    width: 100%;
-    padding: clamp(1rem, 2.5vw, 1.3rem);
-    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--secondary-orange) 100%);
-    background-size: 200% auto;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: clamp(1.05rem, 2vw, 1.2rem);
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 
-        0 8px 24px rgba(255, 140, 66, 0.4),
-        0 4px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 1rem;
-}
-
-.btn-submit::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.btn-submit:hover {
-    transform: translateY(-5px) scale(1.02);
-    background-position: right center;
-    box-shadow: 
-        0 12px 35px rgba(255, 140, 66, 0.6),
-        0 6px 18px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(255, 140, 66, 0.3);
-    animation: submitButtonPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes submitButtonPulse {
-    0%, 100% {
-        box-shadow: 
-            0 12px 35px rgba(255, 140, 66, 0.6),
-            0 6px 18px rgba(0, 0, 0, 0.3),
-            0 0 40px rgba(255, 140, 66, 0.3);
-    }
-    50% {
-        box-shadow: 
-            0 15px 45px rgba(255, 140, 66, 0.8),
-            0 8px 25px rgba(0, 0, 0, 0.4),
-            0 0 60px rgba(255, 140, 66, 0.5);
-    }
-}
-
-.btn-submit:hover::after {
-    width: 400px;
-    height: 400px;
-}
-
-.btn-submit:active {
-    transform: translateY(-2px) scale(0.98);
-    box-shadow: 
-        0 6px 20px rgba(255, 140, 66, 0.5),
-        0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Form Footer */
-.form-footer {
-    text-align: center;
-    margin-top: 1.5rem;
-    color: var(--text-light);
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
-}
-
-.form-footer a {
-    color: var(--primary-orange);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.form-footer a:hover {
-    color: var(--secondary-orange);
-    text-decoration: underline;
-}
-
-/* Success/Error States */
-.form-group input.success {
-    border-color: #27ae60;
-    background: rgba(39, 174, 96, 0.05);
-}
-
-.form-group input.error {
-    border-color: #e74c3c;
-    background: rgba(231, 76, 60, 0.05);
-    animation: shakeError 0.5s;
-}
-
-/* Error Message Display */
-.error-message {
-    color: #e74c3c;
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
-    display: block;
-    padding-left: 1.5rem;
-    font-weight: 600;
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 768px) {
-    .modal-content {
-        padding: 2rem 1.5rem;
-        width: 98%;
-        max-height: 95vh;
-        border-radius: 24px;
-    }
-
-    .modal .close {
-        width: 50px;
-        height: 50px;
-        font-size: 2.2rem;
-    }
-
-    .form-group {
-        margin-bottom: 1.2rem;
-    }
-
-    .form-group label {
-        padding-left: 1.2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .form-group input,
-    .form-group select {
-        padding: 0.85rem;
-        border-radius: 12px;
-    }
-
-    .phone-input {
-        gap: 0.5rem;
-    }
-
-    .phone-input select {
-        min-width: 100px;
-        font-size: 0.85rem;
-    }
-
-    .btn-submit {
-        padding: 1rem;
-    }
-
-    .form-row {
-        gap: 0.8rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .modal-content {
-        padding: 1.5rem 1rem;
-        border-radius: 20px;
-    }
-
-    .modal .close {
-        width: 45px;
-        height: 45px;
-        font-size: 2rem;
-        top: 0.5rem;
-        right: 0.5rem;
-    }
-
-    .form-group {
-        margin-bottom: 1rem;
-    }
-
-    .phone-input {
-        gap: 0.4rem;
-    }
-
-    .phone-input select {
-        min-width: 90px;
-        font-size: 0.8rem;
-        padding: 0.7rem 0.3rem;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-    }
-}
-
-/* Accessibility */
-.form-group input:focus-visible,
-.form-group select:focus-visible,
-.btn-submit:focus-visible {
-    outline: 3px solid var(--primary-orange);
-    outline-offset: 3px;
-}
-
-/* Reduce Motion */
-@media (prefers-reduced-motion: reduce) {
-    .modal,
-    .modal-content,
-    .modal-content::before,
-    .modal-content h2,
-    .modal-content h2::after,
-    .modal .close,
-    .modal .close::before,
-    .modal-logo img,
-    .btn-submit,
-    .btn-submit::after,
-    .form-group input,
-    .form-group select,
-    .form-group label::before {
-        animation: none !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-/*====== CONTENT PAGES - ENHANCED A4 CONTAINER STYLE ====== */
-.projects-section, .training-section, .about-container {
-    max-width: 1200px;
-    margin: clamp(1.5rem, 3vw, 2rem) auto;
-    padding: clamp(2.5rem, 5vw, 3.5rem);
-    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 32px;
-    box-shadow: 
-        0 25px 70px rgba(255, 140, 66, 0.4),
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        inset 0 -2px 20px rgba(255, 140, 66, 0.1);
-    position: relative;
-    border: 3px solid transparent;
-    background-clip: padding-box;
-}
-
-.projects-section::before, .training-section::before, .about-container::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 32px;
-    padding: 3px;
-    background: linear-gradient(135deg, 
-        var(--primary-orange) 0%, 
-        var(--gold) 25%, 
-        var(--secondary-orange) 50%, 
-        var(--primary-orange) 75%,
-        var(--gold) 100%);
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: borderGradientFlow 4s linear infinite;
-    z-index: -1;
-}
-
-.projects-section h1, .training-section h2, .about-text h1 {
-    text-align: center;
-    font-size: clamp(2rem, 6vw, 2.8rem);
-    margin: 0 0 1rem 0;
-    background: linear-gradient(135deg, 
-        var(--dark-blue) 0%, 
-        var(--primary-orange) 30%, 
-        var(--gold) 60%, 
-        var(--secondary-orange) 80%, 
-        var(--dark-blue) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleGradient 3s linear infinite;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    position: relative;
-    padding-bottom: 1rem;
-}
-
-.projects-section h1::after, .training-section h2::after, .about-text h1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--primary-orange), 
-        var(--gold),
-        var(--primary-orange), 
-        transparent);
-    border-radius: 2px;
-    animation: underlineGlow 2s ease-in-out infinite;
-}
-
-.projects-section h3, .about-text h3, .training-section h3 {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--text-dark);
-    border-left: 5px solid var(--primary-orange);
-    padding-left: 1rem;
-    font-size: clamp(1.2rem, 3vw, 1.6rem);
-    font-weight: 700;
-    background: linear-gradient(to right, rgba(255, 140, 66, 0.1), transparent);
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.projects-section h3:hover, .about-text h3:hover, .training-section h3:hover {
-    background: linear-gradient(to right, rgba(255, 140, 66, 0.2), transparent);
-    transform: translateX(5px);
-    box-shadow: 0 2px 8px rgba(255, 140, 66, 0.2);
-}
-
-.projects-section p, .about-text p, .training-section p {
-    margin-top: 0.8rem;
-    margin-bottom: 1rem;
-    line-height: 1.9;
-    color: var(--text-light);
-    font-size: clamp(1rem, 1.8vw, 1.1rem);
-    text-align: justify;
-    padding: 0.5rem 0;
-}
-
+/*====== PROJECT SECTION SPECIFIC ENHANCEMENTS ======*/
 .projects-section > p:first-of-type, .training-section > p:first-of-type {
     text-align: center;
     font-size: clamp(1.05rem, 2vw, 1.2rem);
@@ -4719,32 +2835,7 @@ footer {
     border-left-color: var(--gold);
 }
 
-/*  ====== ABOUT SECTION - ENHANCED ====== */
-.about-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(2rem, 4vw, 3rem);
-    align-items: flex-start;
-}
-
-.about-text {
-    flex: 1;
-    min-width: min(100%, 350px);
-}
-
-.about-text h1 {
-    margin-bottom: 2rem;
-}
-
-.about-image {
-    flex: 1;
-    min-width: min(100%, 350px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
+/*====== ABOUT IMAGE GLOW EFFECT ======*/
 .about-image::before {
     content: '';
     position: absolute;
@@ -4762,51 +2853,11 @@ footer {
     50% { opacity: 0.4; transform: scale(1.05); }
 }
 
-.about-image img {
-    width: 100%;
-    max-width: 550px;
-    border-radius: 24px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 3px solid white;
-}
-
-.about-image img:hover {
-    transform: scale(1.05) rotate(2deg);
-    box-shadow: 
-        0 20px 60px rgba(255, 140, 66, 0.4),
-        0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-/*   ====== TRAINING SECTION - ENHANCED  ====== */
-.training-section {
-    max-width: 1200px;
-}
-
-.training-section h2 {
-    margin-bottom: 1.5rem;
-}
-
-.training-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: clamp(2rem, 4vw, 2.5rem);
-    margin-top: 3rem;
-    padding: 2rem 0;
-}
-
-.training-card {
-    background: linear-gradient(145deg, #FFFEF7 0%, #FFF9E6 100%);
-    padding: clamp(2.5rem, 5vw, 3rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 360px;
+.about-image {
     position: relative;
-    overflow: hidden;
 }
 
+/*====== TRAINING CARD SHIMMER EFFECT ======*/
 .training-card::before {
     content: '';
     position: absolute;
@@ -4830,130 +2881,7 @@ footer {
     50% { transform: translate(-10%, -10%) rotate(45deg); }
 }
 
-.training-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 
-        0 25px 60px rgba(255, 140, 66, 0.35),
-        0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.training-icon {
-    font-size: clamp(4rem, 9vw, 5.5rem);
-    margin-bottom: 1.8rem;
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    filter: drop-shadow(0 6px 16px rgba(255, 140, 66, 0.4));
-    animation: iconFloat 3s ease-in-out infinite;
-}
-
-@keyframes iconFloat {
-    0%, 100% {
-        transform: translateY(0) scale(1) rotate(0deg);
-    }
-    25% {
-        transform: translateY(-15px) scale(1.05) rotate(-5deg);
-    }
-    75% {
-        transform: translateY(15px) scale(1.05) rotate(5deg);
-    }
-}
-
-.training-card:hover .training-icon {
-    animation: iconSpinBounce 0.8s ease-in-out;
-    filter: drop-shadow(0 8px 24px rgba(255, 140, 66, 0.6));
-}
-
-@keyframes iconSpinBounce {
-    0% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(180deg) scale(1.3); }
-    50% { transform: rotate(360deg) scale(1.1); }
-    75% { transform: rotate(540deg) scale(1.2); }
-    100% { transform: rotate(720deg) scale(1); }
-}
-
-.training-card h3 {
-    font-size: clamp(1.5rem, 3.5vw, 1.9rem);
-    color: var(--dark-blue);
-    margin: 0 0 1.2rem 0;
-    font-weight: 800;
-    border: none;
-    padding: 0;
-    position: relative;
-    z-index: 1;
-    background: none;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.training-card p {
-    font-size: clamp(1rem, 1.8vw, 1.1rem);
-    color: var(--text-light);
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-    flex-grow: 1;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-.enroll-btn {
-    padding: clamp(0.8rem, 2vw, 1rem) clamp(2rem, 4vw, 3rem);
-    margin-top: auto;
-    position: relative;
-    z-index: 1;
-    font-size: clamp(1rem, 1.8vw, 1.1rem);
-}
-
-.enroll-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.enroll-btn:hover::before {
-    width: 350px;
-    height: 350px;
-}
-
-.enroll-btn:active {
-    transform: translateY(-1px) scale(1.02);
-}
-
-/*====== PROJECT SECTION - ENHANCED ====== */
-.projects-section {
-    max-width: 1200px;
-}
-
-.projects-section h1 {
-    margin-bottom: 0.5rem;
-}
-
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: clamp(2rem, 4vw, 2.8rem);
-    padding: clamp(2rem, 4vw, 2.5rem) 0;
-}
-
-.project-card {
-    background: linear-gradient(145deg, #FFFEF7 0%, #FFF9E6 100%);
-    padding: clamp(2.5rem, 5vw, 3rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 480px;
-    position: relative;
-    overflow: hidden;
-}
-
+/*====== PROJECT CARD SHIMMER EFFECT ======*/
 .project-card::before {
     content: '';
     position: absolute;
@@ -4971,56 +2899,7 @@ footer {
     opacity: 1;
 }
 
-.project-card:hover {
-    transform: translateY(-15px) scale(1.03);
-    box-shadow: 
-        0 25px 60px rgba(255, 140, 66, 0.35),
-        0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-.project-card img {
-    width: 100%;
-    max-width: 320px;
-    height: clamp(180px, 28vw, 220px);
-    object-fit: cover;
-    border-radius: 20px;
-    margin-bottom: 1.8rem;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border: 3px solid white;
-}
-
-.project-card:hover img {
-    transform: scale(1.1) rotate(3deg);
-    box-shadow: 0 15px 40px rgba(255, 140, 66, 0.4);
-}
-
-.project-card h3 {
-    margin: 0 0 1.2rem 0;
-    color: var(--dark-blue);
-    border: none;
-    padding: 0;
-    font-size: clamp(1.4rem, 3vw, 1.7rem);
-    font-weight: 800;
-    position: relative;
-    z-index: 1;
-    background: none;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.project-card p {
-    color: var(--text-light);
-    margin-bottom: 1.8rem;
-    font-size: clamp(1rem, 1.8vw, 1.1rem);
-    line-height: 1.8;
-    position: relative;
-    z-index: 1;
-    flex-grow: 1;
-    text-align: center;
-}
-
+/*====== ENHANCED PROJECT DETAILS ======*/
 .project-details {
     display: flex;
     align-items: center;
@@ -5046,171 +2925,376 @@ footer {
 }
 
 .map-icon {
-    width: clamp(22px, 5vw, 26px);
-    height: clamp(22px, 5vw, 26px);
-    fill: var(--primary-orange);
-    flex-shrink: 0;
-    animation: locationPing 2.5s ease-in-out infinite;
     filter: drop-shadow(0 2px 4px rgba(255, 140, 66, 0.3));
 }
 
-@keyframes locationPing {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.3);
-        opacity: 0.7;
-    }
-}
-
 .project-location {
-    font-size: clamp(0.95rem, 1.7vw, 1.05rem);
-    color: var(--text-dark);
-    font-weight: 600;
     letter-spacing: 0.3px;
 }
 
+/*====== ENHANCED PROJECT CARD LINKS ======*/
 .project-card a {
-    display: block;
-    width: fit-content;
-    margin: 2rem auto 0;
-    padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: clamp(1rem, 1.8vw, 1.1rem);
-    border-radius: 50px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid transparent;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    text-align: center;
     letter-spacing: 0.5px;
+    border: 2px solid transparent;
 }
 
-.project-card a::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+/*====== FOCUS VISIBLE STYLES ======*/
+.form-group input:focus-visible,
+.form-group select:focus-visible,
+.contact-form input:focus-visible,
+.contact-form select:focus-visible,
+.contact-form textarea:focus-visible,
+.career-form input:focus-visible,
+.career-form select:focus-visible,
+.career-form textarea:focus-visible,
+.enrollment-form input:focus-visible,
+.enrollment-form select:focus-visible,
+.btn-submit:focus-visible,
+.contact-form button:focus-visible,
+.career-form button:focus-visible,
+.enrollment-form button:focus-visible {
+    outline: 3px solid var(--primary-orange);
+    outline-offset: 3px;
 }
 
-.project-card a:hover {
-    transform: translateY(-5px) scale(1.08);
-    box-shadow: 0 12px 35px rgba(255, 140, 66, 0.6);
-    background: linear-gradient(135deg, var(--secondary-orange), var(--gold));
+/*====== ERROR MESSAGE DISPLAY ======*/
+.error-message {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    display: block;
+    padding-left: 1.5rem;
+    font-weight: 600;
 }
 
-.project-card a:hover::before {
-    width: 350px;
-    height: 350px;
+/*====== TESTIMONIAL HOVER EFFECTS ======*/
+.testimonial-card:hover::after, 
+.video-placeholder:hover::after, 
+.video-container:hover::after {
+    background: rgba(255, 140, 66, 0.95);
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 12px 32px rgba(255, 140, 66, 0.6);
+    border-color: rgba(255,255,255,0.6);
 }
 
-.project-card a:active,
-.project-card a:focus {
-    outline: none;
-    transform: translateY(-2px) scale(1.04);
+@keyframes playButtonPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
 }
 
-/* Responsive Adjustments */
-@media screen and (max-width: 1024px) {
-    .about-container,
-    .training-section,
-    .projects-section {
-        margin-top: 100px;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .about-container,
-    .training-section,
-    .projects-section {
-        margin-top: 15px !important;
-        padding: clamp(1.5rem, 3vw, 2rem) !important;
-    }
-
-    .training-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .project-card {
-        min-height: 420px;
-    }
-
-    .training-card {
-        min-height: 340px;
-    }
-}
-
+/*====== RESPONSIVE ADJUSTMENTS FOR MODALS ======*/
 @media screen and (max-width: 768px) {
-    .about-container {
-        flex-direction: column;
+    .enrollment-form-container {
+        padding: 2rem 1.5rem;
+        width: 98%;
+        max-height: 95vh;
+        border-radius: 24px;
     }
 
-    .about-image {
-        order: -1;
+    .enrollment-form-container .modal-close {
+        top: -12px;
+        right: -12px;
+        width: 50px;
+        height: 50px;
+        font-size: 2.2rem;
+    }
+
+    .enrollment-form {
+        gap: 1.2rem;
+    }
+
+    .enrollment-form label {
+        padding-left: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .enrollment-form input,
+    .enrollment-form select {
+        padding: 0.85rem;
+        border-radius: 12px;
+    }
+
+    .enrollment-form .phone-input {
+        gap: 0.5rem;
+    }
+
+    .enrollment-form .phone-input select {
+        min-width: 100px;
+        font-size: 0.85rem;
+    }
+
+    .enrollment-form button[type="button"] {
+        padding: 1rem;
+    }
+
+    .enrollment-form button[type="button"]::before {
+        left: 1.5rem;
+        font-size: 1.3em;
+    }
+
+    .contact-section {
+        padding: 2rem 1.5rem;
+        margin: 15px auto;
+        border-radius: 24px;
+    }
+
+    .contact-section h3 {
         margin-bottom: 2rem;
+        padding: 0.6rem 1rem;
     }
 
-    .project-card {
-        min-height: 400px;
-        padding: 2rem 1.5rem;
-    }
-    
-    .project-card img {
-        max-width: 100%;
-        height: clamp(160px, 35vw, 200px);
+    .contact-form {
+        gap: 1.2rem;
     }
 
-    .training-card {
-        min-height: 320px;
-        padding: 2rem 1.5rem;
+    .contact-form label {
+        padding-left: 1.2rem;
+        margin-bottom: 0.5rem;
     }
-    
-    .training-icon {
-        font-size: 4rem;
-        margin-bottom: 1.5rem;
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+        padding: 0.85rem;
+        border-radius: 12px;
+    }
+
+    .contact-form .phone-input {
+        gap: 0.5rem;
+    }
+
+    .contact-form .phone-input select {
+        min-width: 100px;
+        font-size: 0.85rem;
+    }
+
+    .contact-form button[type="button"] {
+        padding: 1rem;
+    }
+
+    .contact-form button[type="button"]::before {
+        left: 1.5rem;
+        font-size: 1.3em;
+    }
+
+    .career-section {
+        padding: 2rem 1.5rem;
+        margin: 15px auto;
+        border-radius: 24px;
+    }
+
+    .career-section h3 {
+        margin: 1.2rem 0 0.8rem 0;
+        padding-left: 0.8rem;
+    }
+
+    .career-form {
+        gap: 1.2rem;
+    }
+
+    .career-form label {
+        padding-left: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .career-form input,
+    .career-form select,
+    .career-form textarea {
+        padding: 0.85rem;
+        border-radius: 12px;
+    }
+
+    .career-form .phone-input {
+        gap: 0.5rem;
+    }
+
+    .career-form .phone-input select {
+        min-width: 100px;
+        font-size: 0.85rem;
+    }
+
+    .career-form button[type="button"] {
+        padding: 1rem;
+    }
+
+    .career-form button[type="button"]::before {
+        left: 1.5rem;
+        font-size: 1.3em;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .projects-section, .training-section, .about-container {
-        padding: 1.5rem 1rem !important;
-        border-radius: 24px;
-    }
-
-    .training-card {
-        min-height: 300px;
+    .enrollment-form-container {
         padding: 1.5rem 1rem;
-    }
-    
-    .training-icon {
-        font-size: 3.5rem;
-    }
-    
-    .project-card {
-        min-height: 380px;
-        padding: 1.5rem 1rem;
+        border-radius: 20px;
     }
 
-    .projects-container {
-        gap: 1.5rem;
+    .enrollment-form-container .modal-close {
+        width: 45px;
+        height: 45px;
+        font-size: 2rem;
+        top: -10px;
+        right: -10px;
     }
 
-    .training-cards-grid {
-        gap: 1.5rem;
+    .enrollment-form {
+        gap: 1rem;
+    }
+
+    .enrollment-form .phone-input {
+        gap: 0.4rem;
+    }
+
+    .enrollment-form .phone-input select {
+        min-width: 90px;
+        font-size: 0.8rem;
+        padding: 0.7rem 0.3rem;
+    }
+
+    #selectedCourse {
+        font-size: 1.1rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .contact-section h3 {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .contact-form {
+        gap: 1rem;
+    }
+
+    .contact-form .phone-input {
+        gap: 0.4rem;
+    }
+
+    .contact-form .phone-input select {
+        min-width: 90px;
+        font-size: 0.8rem;
+        padding: 0.7rem 0.3rem;
+    }
+
+    .contact-form textarea {
+        min-height: 120px;
+    }
+
+    .career-section h3 {
+        font-size: 1rem;
+        padding-left: 0.6rem;
+        margin: 1rem 0 0.6rem 0;
+    }
+
+    .career-form {
+        gap: 1rem;
+    }
+
+    .career-form .phone-input {
+        gap: 0.4rem;
+    }
+
+    .career-form .phone-input select {
+        min-width: 90px;
+        font-size: 0.8rem;
+        padding: 0.7rem 0.3rem;
+    }
+
+    .career-form textarea {
+        min-height: 120px;
+    }
+}
+
+/*====== FINAL UTILITY & OVERRIDE STYLES ======*/
+.a4-container .career-section {
+    max-width: 800px;
+    margin: clamp(1.5rem, 3vw, 2rem) auto;
+    padding: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.a4-container {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+/* ====== ESSENTIAL MISSING CODE - BEAUTIFIED ====== */
+
+/* Close button glow effect */
+.close::after, .modal-close-btn::after, .modal-close::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--primary-orange), var(--gold), var(--secondary-orange), var(--primary-orange));
+    opacity: 0;
+    animation: closeGlow 3s linear infinite;
+    z-index: -1;
+}
+
+@keyframes closeGlow {
+    0%, 100% { 
+        opacity: 0; 
+        transform: scale(0.8) rotate(0deg); 
+    }
+    50% { 
+        opacity: 0.5; 
+        transform: scale(1.2) rotate(180deg); 
+    }
+}
+
+/* Remove unwanted title decorations */
+.about-text h1::before, .about-text h1::after,
+.projects-section h1::before, .projects-section h1::after,
+.training-section h2::before, .training-section h2::after,
+.about-text h3::before, .projects-section h3::before, 
+.training-section h3::before {
+    content: none !important;
+}
+
+/* Remove golden line after "Let's Build The Dream" text */
+.modal-logo p::after,
+.contact-header h2::after,
+.enrollment-form-container p::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Beautiful golden line ONLY after "DREAM SMART" h1 title */
+.modal-logo h1 {
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.modal-logo h1::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100px !important;
+    height: 4px !important;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--primary-orange) 20%, 
+        var(--gold) 50%, 
+        var(--primary-orange) 80%, 
+        transparent 100%) !important;
+    border-radius: 2px !important;
+    animation: underlineGlow 2s ease-in-out infinite !important;
+    display: block !important;
+}
+
+@keyframes underlineGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 5px var(--primary-orange),
+            0 0 10px rgba(255, 140, 66, 0.3);
+        width: 100px;
+    }
+    50% {
+        box-shadow: 
+            0 0 20px var(--gold),
+            0 0 30px rgba(255, 204, 0, 0.5);
+        width: 140px;
     }
 }

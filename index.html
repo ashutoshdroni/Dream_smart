@@ -457,5 +457,87 @@
     </div>
 
     <script src="script.js"></script>
+    
+    <script>
+        (function() {
+            'use strict';
+            
+            const teamMembers = {
+                'Rajesh Kumar': {
+                    email: 'rajesh.kumar@dreamsmart.com',
+                    phone: '+918427997933'
+                },
+                'Rakesh Kumar': {
+                    email: 'rakesh.kumar@dreamsmart.com',
+                    phone: '+919855091228'
+                },
+                'Raj Kumar': {
+                    email: 'raj.kumar@dreamsmart.com',
+                    phone: '+918427997933'
+                }
+            };
+
+            window.contactTeamMember = function(memberName) {
+                const member = teamMembers[memberName];
+                if (!member) {
+                    alert('Contact information not available');
+                    return;
+                }
+                
+                const message = encodeURIComponent(`Hi, I would like to connect with ${memberName} from Dream Smart.`);
+                window.location.href = `https://wa.me/${member.phone.replace(/\+/g, '')}?text=${message}`;
+            };
+
+            // Note: showTeamProfile is defined in script.js
+            // No need to define it here - it will use the external implementation
+
+            // Lazy load YouTube iframes for better performance
+            function lazyLoadVideos() {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const iframe = entry.target;
+                            if (iframe.dataset.src) {
+                                iframe.src = iframe.dataset.src;
+                                iframe.removeAttribute('data-src');
+                                videoObserver.unobserve(iframe);
+                            }
+                        }
+                    });
+                }, { rootMargin: '50px' });
+
+                document.querySelectorAll('.testimonial-card iframe').forEach(iframe => {
+                    if (iframe.src) {
+                        iframe.dataset.src = iframe.src;
+                        iframe.removeAttribute('src');
+                        videoObserver.observe(iframe);
+                    }
+                });
+            }
+
+            // Optimize video loading
+            function optimizeVideoLoad() {
+                const video = document.querySelector('.project-video video');
+                if (!video) return;
+
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            video.load();
+                            videoObserver.unobserve(video);
+                        }
+                    });
+                }, { rootMargin: '100px' });
+
+                videoObserver.observe(video);
+            }
+
+            // Initialize optimizations
+            document.addEventListener('DOMContentLoaded', function() {
+                lazyLoadVideos();
+                optimizeVideoLoad();
+            });
+        })();
+    </script>
 </body>
 </html>
