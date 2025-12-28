@@ -1,4 +1,4 @@
-// ==================== DATA ====================
+// ==================== ULTRA OPTIMIZED DATA ====================
 const teamMembers = {
     'Rajesh Kumar': {
         name: 'Rajesh Kumar',
@@ -91,16 +91,11 @@ const projectsData = {
     }
 };
 
-// ==================== CACHED DOM ELEMENTS ====================
+// ==================== ULTRA FAST DOM CACHE ====================
 const DOM = {};
+const modals = {};
 
-// ==================== MODAL MANAGEMENT ====================
-const modals = {
-    login: null,
-    signup: null,
-    enrollment: null
-};
-
+// ==================== INSTANT INITIALIZATION ====================
 function initializeDOM() {
     modals.login = document.getElementById('loginModal');
     modals.signup = document.getElementById('signupModal');
@@ -113,396 +108,296 @@ function initializeDOM() {
     DOM.progressContainer = document.getElementById('progress-container');
 }
 
-function toggleModal(name, show) {
-    const m = modals[name];
-    if (!m) return;
-    m.style.display = show ? 'flex' : 'none';
+// ==================== INSTANT MODAL MANAGEMENT ====================
+const toggleModal = (name, show) => {
+    const modal = modals[name];
+    if (!modal) return;
+    
+    modal.style.display = show ? 'flex' : 'none';
+    modal.setAttribute('aria-hidden', !show);
     document.body.style.overflow = show ? 'hidden' : 'auto';
-}
+};
 
-function openLoginModal() { toggleModal('login', true); }
-function closeLoginModal() { 
-    toggleModal('login', false);
-    clearFormErrors('loginForm');
-}
-function openSignupModal() { toggleModal('signup', true); }
-function closeSignupModal() { 
-    toggleModal('signup', false);
-    clearFormErrors('signupForm');
-}
-function switchToSignup() { closeLoginModal(); openSignupModal(); }
-function switchToLogin() { closeSignupModal(); openLoginModal(); }
-function openEnrollmentModal() { toggleModal('enrollment', true); }
-function closeEnrollmentModal() { toggleModal('enrollment', false); }
+const openLoginModal = () => toggleModal('login', true);
+const closeLoginModal = () => { toggleModal('login', false); clearFormErrors('loginForm'); };
+const openSignupModal = () => toggleModal('signup', true);
+const closeSignupModal = () => { toggleModal('signup', false); clearFormErrors('signupForm'); };
+const switchToSignup = () => { closeLoginModal(); openSignupModal(); };
+const switchToLogin = () => { closeSignupModal(); openLoginModal(); };
+const openEnrollmentModal = () => toggleModal('enrollment', true);
+const closeEnrollmentModal = () => toggleModal('enrollment', false);
 
-// ==================== TEAM PROFILE ====================
+// ==================== ULTRA FAST TEAM PROFILE ====================
 function showTeamProfile(memberName) {
-    const m = teamMembers[memberName];
-    if (!m) return;
+    const member = teamMembers[memberName];
+    if (!member) return;
 
-    let modal = document.getElementById('teamProfileModal');
+    let modal = modals.teamProfile || document.getElementById('teamProfileModal');
+    
     if (!modal) {
         modal = document.createElement('div');
         modal.id = 'teamProfileModal';
         modal.className = 'team-profile-modal';
+        modal.innerHTML = '<div class="team-profile-content"></div>';
         document.body.appendChild(modal);
+        modals.teamProfile = modal;
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeTeamProfile(); });
     }
 
-    const initials = m.name.split(' ').map(n => n[0]).join('');
+    const content = modal.querySelector('.team-profile-content');
+    const initials = member.name.split(' ').map(n => n[0]).join('');
     
-    modal.innerHTML = `
-        <div class="team-profile-content">
-            <span class="modal-close-btn" onclick="closeTeamProfile()">&times;</span>
-            <div class="profile-header">
-                <div class="profile-avatar">${initials}</div>
-                <h2>${m.name}</h2>
-                <p class="role">${m.role}</p>
-                <p class="experience">${m.experience}</p>
-            </div>
-            <div class="profile-section">
-                <h3>About</h3>
-                <p>${m.about}</p>
-            </div>
-            <div class="profile-section">
-                <h3>Contact Information</h3>
-                <div class="contact-info-item"><strong>Email:</strong><span>${m.email}</span></div>
-                <div class="contact-info-item"><strong>Phone:</strong><span>${m.phone}</span></div>
-                <div class="contact-info-item"><strong>Location:</strong><span>${m.location}</span></div>
-            </div>
-            <div class="profile-section">
-                <h3>Education & Specialization</h3>
-                <p><strong>Education:</strong> ${m.education}</p>
-                <p><strong>Specialization:</strong> ${m.specialization}</p>
-            </div>
-            <div class="profile-section">
-                <h3>Core Skills</h3>
-                <ul>${m.skills.map(s => `<li>${s}</li>`).join('')}</ul>
-            </div>
-            <div class="profile-section">
-                <h3>Key Projects</h3>
-                <ul>${m.projects.map(p => `<li>${p}</li>`).join('')}</ul>
-            </div>
-            <div class="profile-section">
-                <h3>Certifications</h3>
-                <ul>${m.certifications.map(c => `<li>${c}</li>`).join('')}</ul>
-            </div>
+    content.innerHTML = `
+        <span class="modal-close-btn" onclick="closeTeamProfile()">&times;</span>
+        <div class="profile-header">
+            <div class="profile-avatar">${initials}</div>
+            <h2>${member.name}</h2>
+            <p class="role">${member.role}</p>
+            <p class="experience">${member.experience}</p>
+        </div>
+        <div class="profile-section">
+            <h3>About</h3>
+            <p>${member.about}</p>
+        </div>
+        <div class="profile-section">
+            <h3>Contact Information</h3>
+            <div class="contact-info-item"><strong>Email:</strong><span>${member.email}</span></div>
+            <div class="contact-info-item"><strong>Phone:</strong><span>${member.phone}</span></div>
+            <div class="contact-info-item"><strong>Location:</strong><span>${member.location}</span></div>
+        </div>
+        <div class="profile-section">
+            <h3>Education & Specialization</h3>
+            <p><strong>Education:</strong> ${member.education}</p>
+            <p><strong>Specialization:</strong> ${member.specialization}</p>
+        </div>
+        <div class="profile-section">
+            <h3>Core Skills</h3>
+            <ul>${member.skills.map(s => `<li>${s}</li>`).join('')}</ul>
+        </div>
+        <div class="profile-section">
+            <h3>Key Projects</h3>
+            <ul>${member.projects.map(p => `<li>${p}</li>`).join('')}</ul>
+        </div>
+        <div class="profile-section">
+            <h3>Certifications</h3>
+            <ul>${member.certifications.map(c => `<li>${c}</li>`).join('')}</ul>
         </div>
     `;
 
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => {
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    });
 }
 
-function closeTeamProfile() {
-    const m = document.getElementById('teamProfileModal');
-    if (m) {
-        m.style.display = 'none';
+const closeTeamProfile = () => {
+    const modal = modals.teamProfile || document.getElementById('teamProfileModal');
+    if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = 'auto';
     }
-}
+};
 
-// ==================== PROJECT DETAILS ====================
+// ==================== INSTANT PROJECT DETAILS ====================
 function showProjectDetails(projectId) {
-    const p = projectsData[projectId];
-    if (!p) return;
+    const project = projectsData[projectId];
+    if (!project) return;
 
-    let modal = document.getElementById('projectModal');
+    let modal = modals.project || document.getElementById('projectModal');
+    
     if (!modal) {
         modal = document.createElement('div');
         modal.id = 'projectModal';
         modal.className = 'project-modal';
+        modal.innerHTML = '<div class="project-modal-content"></div>';
         document.body.appendChild(modal);
+        modals.project = modal;
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeProjectModal(); });
     }
 
-    const detailsHtml = Object.entries(p.details).map(([k, v]) => 
-        `<div class="project-info-item"><strong>${k}:</strong><span>${v}</span></div>`
-    ).join('');
+    const content = modal.querySelector('.project-modal-content');
+    
+    // Pre-build all HTML strings for maximum speed
+    const detailsHtml = Object.entries(project.details)
+        .map(([k, v]) => `<div class="project-info-item"><strong>${k}:</strong><span>${v}</span></div>`)
+        .join('');
+    const featuresHtml = project.features.map(f => `<li>${f}</li>`).join('');
+    const challengesHtml = project.challenges.map(c => `<li>${c}</li>`).join('');
 
-    modal.innerHTML = `
-        <div class="project-modal-content">
-            <span class="modal-close-btn" onclick="closeProjectModal()">&times;</span>
-            <div class="project-modal-header">
-                <h2>${p.title}</h2>
-                <div class="project-details">
-                    <svg class="map-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    <span class="project-location">${p.location}</span>
-                </div>
+    content.innerHTML = `
+        <span class="modal-close-btn" onclick="closeProjectModal()">&times;</span>
+        <div class="project-modal-header">
+            <h2>${project.title}</h2>
+            <div class="project-details">
+                <svg class="map-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <span class="project-location">${project.location}</span>
             </div>
-            <img src="${p.image}" alt="${p.title}" class="project-modal-image">
-            <div class="project-modal-body">
-                <h3>Project Overview</h3>
-                <p>${p.fullDescription}</p>
-                <h3>Project Details</h3>
-                <div class="project-info-grid">${detailsHtml}</div>
-                <h3>Key Features</h3>
-                <ul>${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
-                <h3>Challenges & Solutions</h3>
-                <ul>${p.challenges.map(c => `<li>${c}</li>`).join('')}</ul>
-                <h3>Project Outcome</h3>
-                <p>${p.outcome}</p>
-            </div>
+        </div>
+        <img src="${project.image}" alt="${project.title}" class="project-modal-image" loading="lazy">
+        <div class="project-modal-body">
+            <h3>Project Overview</h3>
+            <p>${project.fullDescription}</p>
+            <h3>Project Details</h3>
+            <div class="project-info-grid">${detailsHtml}</div>
+            <h3>Key Features</h3>
+            <ul>${featuresHtml}</ul>
+            <h3>Challenges & Solutions</h3>
+            <ul>${challengesHtml}</ul>
+            <h3>Project Outcome</h3>
+            <p>${project.outcome}</p>
         </div>
     `;
 
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeProjectModal() {
-    const m = document.getElementById('projectModal');
-    if (m) {
-        m.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// ==================== MOBILE MENU ====================
-function toggleSidebar() {
-    DOM.mobileSidebar?.classList.toggle('active');
-    DOM.sidebarOverlay?.classList.toggle('active');
-    DOM.menuToggle?.classList.toggle('active');
-}
-
-function closeSidebar() {
-    DOM.mobileSidebar?.classList.remove('active');
-    DOM.sidebarOverlay?.classList.remove('active');
-    DOM.menuToggle?.classList.remove('active');
-}
-
-// ==================== CLOUDINARY UPLOAD ====================
-function uploadToCloudinary(file, typeLabel, btn) {
-    return new Promise((resolve, reject) => {
-        if (!file) {
-            resolve("Not provided");
-            return;
-        }
-
-        const cloudName = 'dabfdtke8';
-        const unsignedPreset = 'career_form_preset';
-        
-        DOM.progressContainer.style.display = "block";
-        DOM.progressBar.classList.add('pulse');
-
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('upload_preset', unsignedPreset);
-
-        const resourceType = file.type.includes('video') ? 'video' : 'raw';
-        const url = `https://api.cloudinary.com/v1_1/${cloudName}/${resourceType}/upload`;
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', url, true);
-
-        xhr.upload.onprogress = (e) => {
-            if (e.lengthComputable) {
-                const pct = Math.round((e.loaded / e.total) * 100);
-                btn.innerText = `⏳ Uploading ${typeLabel} (${pct}%)`;
-                DOM.progressBar.style.width = pct + "%";
-            }
-        };
-
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-                const res = JSON.parse(xhr.responseText);
-                DOM.progressBar.classList.remove('pulse');
-                DOM.progressBar.style.width = "0%";
-                resolve(res.secure_url);
-            } else {
-                const err = JSON.parse(xhr.responseText);
-                reject(new Error(err.error.message));
-            }
-        };
-
-        xhr.onerror = () => reject(new Error("Network Error. Please check your internet."));
-        xhr.send(formData);
+    requestAnimationFrame(() => {
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
     });
 }
 
-async function sendWhatsApp() {
-    const btn = document.querySelector('.career-form button');
-    
-    const name = document.getElementById('fullName').value;
-    const email = document.getElementById('email').value;
-    const countryCode = document.getElementById('country-code').value;
-    const mobile = document.getElementById('mobile').value;
-    const position = document.getElementById('position').value;
-    const resumeFile = document.getElementById('resume').files[0];
-    const videoFile = document.getElementById('video').files[0];
-
-    if (!name || !resumeFile) {
-        alert("Please fill in required fields (Name & Resume).");
-        return;
+const closeProjectModal = () => {
+    const modal = modals.project || document.getElementById('projectModal');
+    if (modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = 'auto';
     }
+};
 
-    try {
-        btn.disabled = true;
-        btn.style.opacity = "0.7";
-
-        const resumeUrl = await uploadToCloudinary(resumeFile, "Resume", btn);
-        let videoUrl = "Not provided";
-        if (videoFile) videoUrl = await uploadToCloudinary(videoFile, "Video", btn);
-
-        btn.innerText = "✅ Sending to WhatsApp...";
-        DOM.progressContainer.style.display = "none";
-
-        const msg = `*New Career Application*\n*Name:* ${name}\n*Email:* ${email}\n*Mobile:* ${countryCode} ${mobile}\n*Position:* ${position}\n*Resume URL:* ${resumeUrl}\n*Video URL:* ${videoUrl}`;
-        const phone = "919815969240";
-        window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-
-    } catch (error) {
-        alert("Upload Failed: " + error.message);
-        btn.disabled = false;
-        btn.innerText = "Submit Application via WhatsApp";
-        btn.style.opacity = "1";
-        DOM.progressContainer.style.display = "none";
+// ==================== INSTANT MOBILE MENU ====================
+const toggleSidebar = () => {
+    const isActive = DOM.mobileSidebar?.classList.contains('active');
+    if (isActive) {
+        closeSidebar();
+    } else {
+        DOM.mobileSidebar?.classList.add('active');
+        DOM.sidebarOverlay?.classList.add('active');
+        DOM.menuToggle?.classList.add('active');
+        DOM.menuToggle?.setAttribute('aria-expanded', 'true');
     }
-}
+};
 
-// ==================== VALIDATION FUNCTIONS ====================
+const closeSidebar = () => {
+    DOM.mobileSidebar?.classList.remove('active');
+    DOM.sidebarOverlay?.classList.remove('active');
+    DOM.menuToggle?.classList.remove('active');
+    DOM.menuToggle?.setAttribute('aria-expanded', 'false');
+};
+
+// ==================== ULTRA FAST VALIDATION ====================
 const validators = {
     name: (value, fieldName) => {
-        const namePattern = /^[a-zA-Z\s]{2,30}$/;
         if (!value.trim()) return `${fieldName} is required`;
         if (value.length < 2) return `${fieldName} must be at least 2 characters`;
         if (value.length > 30) return `${fieldName} must not exceed 30 characters`;
-        if (!namePattern.test(value)) return `${fieldName} can only contain letters and spaces`;
+        if (!/^[a-zA-Z\s]{2,30}$/.test(value)) return `${fieldName} can only contain letters and spaces`;
         return null;
     },
-    
     email: (value) => {
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!value.trim()) return 'Email is required';
-        if (!emailPattern.test(value)) return 'Please enter a valid email address (e.g., example@email.com)';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Please enter a valid email address';
         return null;
     },
-    
     phone: (value) => {
-        const phonePattern = /^[0-9]{10}$/;
         if (!value.trim()) return 'Mobile number is required';
-        if (!phonePattern.test(value)) {
-            return value.length < 10 
-                ? `Mobile number must be exactly 10 digits (${10 - value.length} more needed)`
-                : 'Mobile number must be exactly 10 digits';
-        }
+        if (!/^[0-9]{10}$/.test(value)) return value.length < 10 ? `Mobile number must be exactly 10 digits (${10 - value.length} more needed)` : 'Mobile number must be exactly 10 digits';
         return null;
     },
-    
     password: (value) => {
         if (!value) return 'Password is required';
         if (value.length < 8) return `Password must be at least 8 characters (${8 - value.length} more needed)`;
-        
-        const hasUpperCase = /[A-Z]/.test(value);
-        const hasLowerCase = /[a-z]/.test(value);
-        const hasNumber = /[0-9]/.test(value);
-        
-        if (!hasUpperCase || !hasLowerCase || !hasNumber) {
-            return 'Password should contain uppercase, lowercase, and numbers';
-        }
+        if (!/[A-Z]/.test(value) || !/[a-z]/.test(value) || !/[0-9]/.test(value)) return 'Password should contain uppercase, lowercase, and numbers';
         return null;
     }
 };
 
-function validateField(input, validatorType, ...args) {
+const validateField = (input, validatorType, ...args) => {
     const error = validators[validatorType](input.value, ...args);
-    
     if (error) {
         showError(input, error);
         return false;
     }
-    
     clearError(input);
     input.classList.add('success');
     setTimeout(() => input.classList.remove('success'), 2000);
     return true;
-}
+};
 
-function validateName(input, fieldName) {
-    return validateField(input, 'name', fieldName);
-}
+const validateName = (input, fieldName) => validateField(input, 'name', fieldName);
+const validateEmail = (input) => validateField(input, 'email');
+const validatePhone = (input) => validateField(input, 'phone');
+const validatePassword = (input) => validateField(input, 'password');
 
-function validateEmail(input) {
-    return validateField(input, 'email');
-}
-
-function validatePhone(input) {
-    return validateField(input, 'phone');
-}
-
-function validatePassword(input) {
-    return validateField(input, 'password');
-}
-
-function validateConfirmPassword() {
-    const password = document.getElementById('signupPassword').value;
+const validateConfirmPassword = () => {
+    const password = document.getElementById('signupPassword')?.value;
     const confirmPassword = document.getElementById('confirmPassword');
-    const value = confirmPassword.value;
+    if (!confirmPassword) return true;
     
+    const value = confirmPassword.value;
     if (!value) {
         showError(confirmPassword, 'Please confirm your password');
         return false;
     }
-    
     if (password !== value) {
         showError(confirmPassword, 'Passwords do not match');
         return false;
     }
-    
     clearError(confirmPassword);
     confirmPassword.classList.add('success');
     setTimeout(() => confirmPassword.classList.remove('success'), 2000);
     return true;
-}
+};
 
-function showError(input, message) {
+const showError = (input, message) => {
+    if (!input) return;
     input.classList.remove('success');
     input.classList.add('error');
     
-    const existingError = input.parentElement.querySelector('.error-message');
+    const existingError = input.parentElement?.querySelector('.error-message');
     if (existingError) existingError.remove();
     
     const errorDiv = document.createElement('span');
     errorDiv.className = 'error-message';
     errorDiv.textContent = '⚠️ ' + message;
-    input.parentElement.appendChild(errorDiv);
-}
+    input.parentElement?.appendChild(errorDiv);
+};
 
-function clearError(input) {
+const clearError = (input) => {
+    if (!input) return;
     input.classList.remove('error');
-    const errorMessage = input.parentElement.querySelector('.error-message');
+    const errorMessage = input.parentElement?.querySelector('.error-message');
     if (errorMessage) errorMessage.remove();
-}
+};
 
-function clearFormErrors(formId) {
+const clearFormErrors = (formId) => {
     const form = document.getElementById(formId);
     if (!form) return;
-    
     form.reset();
-    form.querySelectorAll('.error, .success').forEach(el => {
-        el.classList.remove('error', 'success');
-    });
+    form.querySelectorAll('.error, .success').forEach(el => el.classList.remove('error', 'success'));
     form.querySelectorAll('.error-message').forEach(el => el.remove());
-}
+};
 
-function validateLoginForm() {
+const validateLoginForm = () => {
     const email = document.getElementById('loginEmail');
     const password = document.getElementById('loginPassword');
+    if (!email || !password) return false;
     
     let isValid = true;
-    
     if (!validateEmail(email)) isValid = false;
-    
     if (!password.value) {
         showError(password, 'Password is required');
         isValid = false;
     } else {
         clearError(password);
     }
-    
     return isValid;
-}
+};
 
-function validateSignupForm() {
+const validateSignupForm = () => {
     const fields = [
         { id: 'firstName', validator: validateName, args: ['First Name'] },
         { id: 'lastName', validator: validateName, args: ['Last Name'] },
@@ -512,81 +407,72 @@ function validateSignupForm() {
     ];
     
     let isValid = true;
-    let firstInvalidField = null;
+    let firstInvalid = null;
     
     for (const field of fields) {
-        const element = document.getElementById(field.id);
-        if (!field.validator(element, ...field.args || [])) {
-            if (!firstInvalidField) firstInvalidField = element;
+        const el = document.getElementById(field.id);
+        if (el && !field.validator(el, ...(field.args || []))) {
+            if (!firstInvalid) firstInvalid = el;
             isValid = false;
         }
     }
     
     if (!validateConfirmPassword()) {
-        if (!firstInvalidField) firstInvalidField = document.getElementById('confirmPassword');
+        if (!firstInvalid) firstInvalid = document.getElementById('confirmPassword');
         isValid = false;
     }
     
     const userType = document.getElementById('userType');
-    if (!userType.value) {
+    if (userType && !userType.value) {
         alert('⚠ Please select your user type.');
-        if (!firstInvalidField) firstInvalidField = userType;
+        if (!firstInvalid) firstInvalid = userType;
         isValid = false;
     }
     
-    if (firstInvalidField) firstInvalidField.focus();
+    if (firstInvalid) firstInvalid.focus();
     return isValid;
-}
+};
 
-// ==================== EVENT HANDLERS ====================
-function setupValidationListeners() {
-    // Input sanitization
-    const setupInputFilter = (id, pattern, maxLength) => {
-        const input = document.getElementById(id);
-        if (!input) return;
-        
-        input.addEventListener('input', function() {
-            this.value = this.value.replace(pattern, '');
-            if (maxLength && this.value.length > maxLength) {
-                this.value = this.value.slice(0, maxLength);
-            }
-        });
-    };
-    
-    // Name fields
+// ==================== INSTANT INPUT FILTERS ====================
+const setupInputFilter = (id, pattern, maxLength) => {
+    const input = document.getElementById(id);
+    if (!input) return;
+    input.addEventListener('input', function() {
+        this.value = this.value.replace(pattern, '');
+        if (maxLength && this.value.length > maxLength) this.value = this.value.slice(0, maxLength);
+    }, { passive: true });
+};
+
+const setupValidationListeners = () => {
     ['firstName', 'lastName'].forEach(id => {
         setupInputFilter(id, /[^a-zA-Z\s]/g, 30);
         const input = document.getElementById(id);
-        if (input) {
-            input.addEventListener('blur', () => validateName(input, id === 'firstName' ? 'First Name' : 'Last Name'));
-        }
+        if (input) input.addEventListener('blur', () => validateName(input, id === 'firstName' ? 'First Name' : 'Last Name'), { passive: true });
     });
     
-    // Email fields
     ['loginEmail', 'signupEmail'].forEach(id => {
         const input = document.getElementById(id);
-        if (input) input.addEventListener('blur', () => validateEmail(input));
+        if (input) input.addEventListener('blur', () => validateEmail(input), { passive: true });
     });
     
-    // Phone field
     setupInputFilter('phone', /[^0-9]/g, 10);
     const phone = document.getElementById('phone');
-    if (phone) phone.addEventListener('blur', () => validatePhone(phone));
+    if (phone) phone.addEventListener('blur', () => validatePhone(phone), { passive: true });
     
-    // Password fields
     const signupPassword = document.getElementById('signupPassword');
     const confirmPassword = document.getElementById('confirmPassword');
-    if (signupPassword) signupPassword.addEventListener('blur', () => validatePassword(signupPassword));
-    if (confirmPassword) confirmPassword.addEventListener('blur', validateConfirmPassword);
-}
+    if (signupPassword) signupPassword.addEventListener('blur', () => validatePassword(signupPassword), { passive: true });
+    if (confirmPassword) confirmPassword.addEventListener('blur', validateConfirmPassword, { passive: true });
+};
 
-function setupFormHandlers() {
+// ==================== INSTANT FORM HANDLERS ====================
+const setupFormHandlers = () => {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             if (validateLoginForm()) {
-                const email = document.getElementById('loginEmail').value;
+                const email = document.getElementById('loginEmail')?.value;
                 alert(`✅ Welcome back! Login successful for ${email}`);
                 closeLoginModal();
             }
@@ -598,81 +484,52 @@ function setupFormHandlers() {
         signupForm.addEventListener('submit', (e) => {
             e.preventDefault();
             if (validateSignupForm()) {
-                const firstName = document.getElementById('firstName').value;
+                const firstName = document.getElementById('firstName')?.value;
                 alert(`✅ Account created successfully! Welcome ${firstName}!`);
                 closeSignupModal();
             }
         });
     }
+};
 
-    const careerForm = document.querySelector('.career-form');
-    if (careerForm) {
-        careerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('fullName').value;
-            alert(`Application submitted successfully! Thank you, ${name}!`);
-            careerForm.reset();
-        });
-    }
-
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            alert(`Thank you, ${name}! Your message has been sent.`);
-            contactForm.reset();
-        });
-    }
-
-    const enrollmentForm = document.querySelector('.enrollment-form');
-    if (enrollmentForm) {
-        enrollmentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name')?.value || 'Student';
-            alert(`Enrollment successful! Welcome, ${name}! Our team will contact you soon.`);
-            closeEnrollmentModal();
-            enrollmentForm.reset();
-        });
-    }
-}
-
-function setupModalHandlers() {
-    Object.values(modals).forEach(m => {
-        m?.addEventListener('click', (e) => {
-            if (e.target === m) {
-                for (const [key, modal] of Object.entries(modals)) {
-                    if (modal === m) toggleModal(key, false);
-                }
+// ==================== INSTANT MODAL HANDLERS ====================
+const setupModalHandlers = () => {
+    Object.values(modals).forEach(modal => {
+        if (!modal) return;
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = 'auto';
             }
         });
     });
 
-    document.addEventListener('click', (e) => {
-        const teamModal = document.getElementById('teamProfileModal');
-        const projectModal = document.getElementById('projectModal');
-        
-        if (teamModal && e.target === teamModal) closeTeamProfile();
-        if (projectModal && e.target === projectModal) closeProjectModal();
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeTeamProfile();
+            closeProjectModal();
+            if (modals.login?.style.display === 'flex') closeLoginModal();
+            if (modals.signup?.style.display === 'flex') closeSignupModal();
+            if (modals.enrollment?.style.display === 'flex') closeEnrollmentModal();
+        }
     });
-}
+};
 
-function setupMobileMenu() {
+// ==================== INSTANT MOBILE MENU SETUP ====================
+const setupMobileMenu = () => {
     DOM.menuToggle?.addEventListener('click', (e) => {
         e.stopPropagation();
         toggleSidebar();
     });
-
     DOM.sidebarOverlay?.addEventListener('click', closeSidebar);
-
     document.querySelectorAll('.sidebar-nav a, .sidebar-btn').forEach(el => {
-        el.addEventListener('click', () => {
-            if (window.innerWidth <= 768) closeSidebar();
-        });
+        el.addEventListener('click', () => { if (window.innerWidth <= 768) closeSidebar(); });
     });
-}
+};
 
-function setupNavigation() {
+// ==================== INSTANT NAVIGATION ====================
+const setupNavigation = () => {
     document.querySelectorAll('.nav-links a').forEach(link => {
         if (link.href === window.location.href) link.classList.add('active');
     });
@@ -682,35 +539,20 @@ function setupNavigation() {
             const href = this.getAttribute('href');
             if (href.length > 1) {
                 e.preventDefault();
-                const target = document.querySelector(href);
-                target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
-}
+};
 
-function setupAccessibility() {
+// ==================== INSTANT ACCESSIBILITY ====================
+const setupAccessibility = () => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.style.scrollBehavior = 'auto';
     }
+};
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const teamModal = document.getElementById('teamProfileModal');
-            const projectModal = document.getElementById('projectModal');
-            
-            if (teamModal?.style.display === 'flex') closeTeamProfile();
-            if (projectModal?.style.display === 'flex') closeProjectModal();
-            
-            // Close main modals
-            if (modals.login?.style.display === 'flex') closeLoginModal();
-            if (modals.signup?.style.display === 'flex') closeSignupModal();
-            if (modals.enrollment?.style.display === 'flex') closeEnrollmentModal();
-        }
-    });
-}
-
-// ==================== INITIALIZATION ====================
+// ==================== INSTANT INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', () => {
     initializeDOM();
     setupValidationListeners();
@@ -721,9 +563,22 @@ document.addEventListener('DOMContentLoaded', () => {
     setupAccessibility();
 });
 
-// ==================== WINDOW CLICK HANDLER ====================
+// ==================== INSTANT WINDOW HANDLERS ====================
 window.addEventListener('click', (e) => {
-    if (e.target === modals.login) closeLoginModal();
-    if (e.target === modals.signup) closeSignupModal();
-    if (e.target === modals.enrollment) closeEnrollmentModal();
+    Object.values(modals).forEach(modal => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
+        }
+    });
 });
+
+// Debounced resize handler for performance
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        if (window.innerWidth > 900 && DOM.mobileSidebar?.classList.contains('active')) closeSidebar();
+    }, 250);
+}, { passive: true });
